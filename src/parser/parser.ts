@@ -1,5 +1,7 @@
 import * as ast from './ast'
-
+// @ts-ignore
+import * as parser from 'pg-query-parser'
+import * as util from 'util'
 export function parseForESLint (
   code: string,
   options?: any
@@ -8,6 +10,8 @@ export function parseForESLint (
     visitorKeys: null
     services: {}
   } {
+  const result = parser.parse(code)
+  console.log(util.inspect(result, false, null))
   return {
     services: {},
     visitorKeys: null,
