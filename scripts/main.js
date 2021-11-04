@@ -23,13 +23,39 @@ async function main () {
     const content = await fs.readFile(path.join(noahdbPath, fileName))
     const struct = content.toString().match(/^type (.*) struct \{\n(([^}])*)^\}\n/m)
     if (!struct) {
+      const enumGoCode = content.toString().match(/^const \(\n((\s[^\n]*\n)*)^\)\n/m)
+      if (!enumGoCode) {
+        return null
+      }
+      const enumGoLines = enumGoCode[1].split('\n')
+      const enumFields = _.filter(enumGoLines.map(l => l.split(/\s+/))
+        .map(function (e) {
+          if (!e[1]) {
+            return null
+          }
+          if (!e[1].match(/^[a-zA-Z]/)) {
+            return null
+          }
+          return {value: e[1].replace('_', '')}
+        }), 'value')
+      const enumName = fileName.replace('.go', '')
+        .split('_').map(w => w[0].toUpperCase() + w.substr(1)).join('')
+      // console.log(enumFields, enumName)
+      const enumLines = enumFields.map(f => `  ${f.value} = '${f.value}',`)
+      const enumCode = `export enum ${enumName} {
+${enumLines.join('\n')}
+}`
+      await fs.writeFile(path.join('./parsedClasses', enumName + '.ts'), enumCode)
       return null
     }
     // console.log(struct[0])
     const structName = struct[1].replace('_', '')
     const fieldLines = struct[2].split('\n')
     const fields = _.filter(fieldLines.map(l => l.split(/\s+/)).map(s => {
-      if (s[1] && s[1].startsWith('/*')) {
+      if (!s || !s[1]) {
+        return null
+      }
+      if (!s[1].match(/^[a-zA-Z]/)) {
         return null
       }
       return {name: s[1], type: s[2]}}), 'type')
