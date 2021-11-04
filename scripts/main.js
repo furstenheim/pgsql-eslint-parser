@@ -13,15 +13,18 @@ async function main () {
   const config = configContent.toString().split('\n')
   const noahdbPath = config[0]
   const files = await fs.readdir(noahdbPath)
-  const goFiles = files.filter(f => f.endsWith('.go')).slice(0, 200)
+  const goFiles = files.filter(f => f.endsWith('.go'))
 
+  fs.writeFile(path.join('./parsedClasses', 'ast.ts'), `import type {Node} from './Node'
+import './typedefs'
+`)
   for (const file of goFiles) {
     await parseFile(file)
   }
   async function parseFile (fileName) {
     console.log(fileName)
     const content = await fs.readFile(path.join(noahdbPath, fileName))
-    const struct = content.toString().match(/^type (.*) struct \{\n(([^}])*)^\}\n/m)
+    const struct = content.toString().match(/^type (.*) struct \{\n(((\t[^\n]+\n)|\n)*)^\}\n/m)
     if (!struct) {
       const enumGoCode = content.toString().match(/^const \(\n((\s[^\n]*\n)*)^\)\n/m)
       if (!enumGoCode) {
@@ -39,13 +42,29 @@ async function main () {
           return {value: e[1].replace('_', '')}
         }), 'value')
       const enumName = fileName.replace('.go', '')
-        .split('_').map(w => w[0].toUpperCase() + w.substr(1)).join('')
+        .split('_').map(function (w) {
+          if (w === 'ts') {
+            return 'TS'
+          }
+          if (w === 'wco') {
+            return 'WCO'
+          }
+          if (w === 'sql') {
+            return 'SQL'
+          }
+          if (w === 'rte') {
+            return 'RTE'
+          }
+          return w[0].toUpperCase() + w.substr(1)
+        }).join('')
       // console.log(enumFields, enumName)
       const enumLines = enumFields.map(f => `  ${f.value} = '${f.value}',`)
-      const enumCode = `export enum ${enumName} {
+      const enumCode = `
+      
+export enum ${enumName} {
 ${enumLines.join('\n')}
 }`
-      await fs.writeFile(path.join('./parsedClasses', enumName + '.ts'), enumCode)
+      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), enumCode)
       return null
     }
     // console.log(struct[0])
@@ -62,9 +81,22 @@ ${enumLines.join('\n')}
     console.log(fields)
     console.log(structName)
     const mappings = {
-      int: 'number',
+      int: 'GoInt',
+      int16: 'GoInt16',
+      int32: 'GoInt32',
+      int64: 'GoInt64',
+      uint16: 'GoUint16',
+      uint32: 'GoUint32',
+      uint64: 'GoUint64',
       List: 'Node[]',
-      bool: 'Boolean'
+      bool: 'Boolean',
+      byte: 'GoByte',
+      float32: 'GoFloat32',
+      float64: 'GoFloat64',
+      '[]Node': 'Node[]',
+      '[][]Node': 'Node[][]',
+      '[]uint32': 'GoUint32[]',
+      'interface{}': 'any'
     }
     const typescriptDefinitions = fields.map(function (f) {
       let type
@@ -75,13 +107,13 @@ ${enumLines.join('\n')}
       }
       return `  ${f.name.toLowerCase()}: ${type}`
     })
-    const classDefinition = `import type {Node} from './Node'
+    const classDefinition = `
 
 export interface ${structName} {
 ${typescriptDefinitions.join('\n')}
 }`
     console.log(classDefinition)
-    await fs.writeFile(path.join('./parsedClasses', structName + '.ts'), classDefinition)
+    await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), classDefinition)
   }
 }
 
