@@ -1,11 +1,11 @@
-import type { SelectStatement } from './SelectStatement'
-import { Integer } from './Integer'
-import { ColumnRef } from './ColumnRef'
-import { ResTarget } from './ResTarget'
+import * as ast from './ast'
 
 export interface Node {
-  SelectStatement?: SelectStatement
-  Integer?: Integer
-  ColumnRef?: ColumnRef
-  ResTarget?: ResTarget
+  SelectStmt?: ast.SelectStmt
+  A_Const?: ast.AConst
+  Integer?: ast.Integer
+  ColumnRef?: ast.ColumnRef
+  ResTarget?: ast.ResTarget
+  String?: ast.String
+  RangeVar?: ast.RangeVar
 }

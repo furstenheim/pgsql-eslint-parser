@@ -58,7 +58,7 @@ import './typedefs'
           return w[0].toUpperCase() + w.substr(1)
         }).join('')
       // console.log(enumFields, enumName)
-      const enumLines = enumFields.map(f => `  ${f.value} = '${f.value}',`)
+      const enumLines = enumFields.map((f, i) => `  ${f.value} = ${i},`)
       const enumCode = `
       
 export enum ${enumName} {
@@ -105,7 +105,7 @@ ${enumLines.join('\n')}
       } else {
         type = f.type.replaceAll('*', '').replaceAll('_', '')
       }
-      return `  ${f.name.toLowerCase()}: ${type}`
+      return `  ${f.name[0].toLowerCase() + f.name.substr(1)}: ${type}`
     })
     const classDefinition = `
 
