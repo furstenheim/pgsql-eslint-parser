@@ -1,7 +1,7 @@
 import { Localizable, LocationTreeNode } from './types'
 type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 
-function toLocationTree (obj: Localizable): LocationTreeNode|null {
+export function toLocationTree (obj: Localizable): LocationTreeNode|null {
   const node: Optional<LocationTreeNode, 'rangeStart'> = {
     rangeEnd: null,
     originalNode: obj,

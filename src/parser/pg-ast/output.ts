@@ -1,6 +1,13 @@
-import {Node} from './Node'
+import { Node } from './Node'
 
 export interface PGOutput {
-  query: Node[]
-  stderr: string
+  version: number
+  stmts: PGStatement[]
+}
+
+export interface PGStatement {
+  stmt: Node
+  stmt_len: number
+  stmt_location?: number
+  location?: number
 }

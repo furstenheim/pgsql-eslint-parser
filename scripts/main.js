@@ -39,7 +39,7 @@ import './typedefs'
           if (!e[1].match(/^[a-zA-Z]/)) {
             return null
           }
-          return {value: e[1].replace('_', '')}
+          return {value: e[1]}
         }), 'value')
       const enumName = fileName.replace('.go', '')
         .split('_').map(function (w) {
@@ -58,12 +58,11 @@ import './typedefs'
           return w[0].toUpperCase() + w.substr(1)
         }).join('')
       // console.log(enumFields, enumName)
-      const enumLines = enumFields.map((f, i) => `  ${f.value} = ${i},`)
+      const enumLines = enumFields.map((f, i) => `'${f.value}'`)
       const enumCode = `
       
-export enum ${enumName} {
-${enumLines.join('\n')}
-}`
+export type ${enumName} = ${enumLines.join('|')}
+`
       await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), enumCode)
       return null
     }
@@ -96,7 +95,8 @@ ${enumLines.join('\n')}
       '[]Node': 'Node[]',
       '[][]Node': 'Node[][]',
       '[]uint32': 'GoUint32[]',
-      'interface{}': 'any'
+      'interface{}': 'any',
+      'hash.Hash': 'GoHash'
     }
     const typescriptDefinitions = fields.map(function (f) {
       let type
@@ -105,7 +105,7 @@ ${enumLines.join('\n')}
       } else {
         type = f.type.replaceAll('*', '').replaceAll('_', '')
       }
-      return `  ${f.name[0].toLowerCase() + f.name.substr(1)}: ${type}`
+      return `  ${f.name[0].toLowerCase() + f.name.substr(1)}?: ${type}`
     })
     const classDefinition = `
 

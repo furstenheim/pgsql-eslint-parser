@@ -1,18 +1,19 @@
 import * as ast from './ast'
-// @ts-expect-error
-import * as parser from 'pg-query-parser'
+import * as parser from 'libpg-query'
+
 import * as util from 'util'
 import { Node } from './pg-ast/Node'
 import {PGOutput} from './pg-ast/output'
-export function parseForESLint (
+export async function parseForESLint (
   code: string,
   options?: any
-): {
+): Promise<{
     ast: ast.PostgresProgram
     visitorKeys: string[]
     services: {}
-  } {
-  const result: PGOutput = parser.parse(code)
+  }> {
+  const result: PGOutput = await parser.parseQuery(code)
+
 
   console.log(util.inspect(result, false, null))
   return {
