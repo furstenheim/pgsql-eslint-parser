@@ -1,5 +1,77 @@
-import type {Node} from './Node'
-import './typedefs'
+
+type GoByte = string
+type GoFloat64 = number
+type GoInt16 = number
+type GoInt32 = number
+type GoInt64 = number
+type GoUint16 = number
+type GoUint32 = number
+type GoUint64 = number
+type GoInt = number
+type GoOid = number
+type GoOp = number
+type GoRegproc = number
+type GoUintptr = number
+type GoHash = number
+
+type AclMode = GoUint32
+
+type DistinctExpr = OpExpr
+
+type NullIfExpr = OpExpr
+
+type Selectivity = GoFloat64
+
+type Cost = GoFloat64
+
+type ParamListInfo = ParamListInfoData
+
+type AttrNumber = GoInt16
+
+type Pointer = GoByte
+
+type Index = GoUint64
+
+type Offset = GoInt64
+
+type regproc = GoOid
+
+type RegProcedure = GoRegproc
+
+type TransactionId = GoUint32
+
+type LocalTransactionId = GoUint32
+
+type SubTransactionId = GoUint32
+
+type MultiXactId = TransactionId
+
+type MultiXactOffset = GoUint32
+
+type CommandId = GoUint32
+
+type Name = String
+
+type Datum = GoUintptr
+
+type DatumPtr = Datum
+
+type Oid = GoUint64
+
+type BlockNumber = GoUint32
+
+type BlockId = BlockIdData
+
+export interface Node {
+  SelectStmt?: SelectStmt
+  A_Const?: AConst
+  Integer?: Integer
+  ColumnRef?: ColumnRef
+  ResTarget?: ResTarget
+  String?: String
+  RangeVar?: RangeVar
+}
+
 
 
 export interface AArrayExpr {

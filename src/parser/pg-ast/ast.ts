@@ -1,4 +1,3 @@
-import type { Node } from './Node'
 
 type GoByte = string
 type GoFloat64 = number
@@ -13,7 +12,7 @@ type GoOid = number
 type GoOp = number
 type GoRegproc = number
 type GoUintptr = number
-type GoHash = string
+type GoHash = number
 
 type AclMode = GoUint32
 
@@ -63,6 +62,17 @@ type BlockNumber = GoUint32
 
 type BlockId = BlockIdData
 
+export interface Node {
+  SelectStmt?: SelectStmt
+  A_Const?: AConst
+  Integer?: Integer
+  ColumnRef?: ColumnRef
+  ResTarget?: ResTarget
+  String?: String
+  RangeVar?: RangeVar
+}
+
+
 
 export interface AArrayExpr {
   elements?: Node[]
@@ -81,7 +91,7 @@ export interface AExpr {
   rexpr?: Node
   location?: GoInt
 }
-
+      
 export type AExprKind = 'AEXPR_OP'|'AEXPR_OP_ANY'|'AEXPR_OP_ALL'|'AEXPR_DISTINCT'|'AEXPR_NOT_DISTINCT'|'AEXPR_NULLIF'|'AEXPR_OF'|'AEXPR_IN'|'AEXPR_LIKE'|'AEXPR_ILIKE'|'AEXPR_SIMILAR'|'AEXPR_BETWEEN'|'AEXPR_NOT_BETWEEN'|'AEXPR_BETWEEN_SYM'|'AEXPR_NOT_BETWEEN_SYM'|'AEXPR_PAREN'
 
 
@@ -104,10 +114,10 @@ export interface AccessPriv {
   privName?: string
   cols?: Node[]
 }
-
+      
 export type AggSplit = 'AGGSPLIT_SIMPLE'|'AGGSPLIT_INITIAL_SERIAL'|'AGGSPLIT_FINAL_DESERIAL'
 
-
+      
 export type AggStrategy = 'AGG_PLAIN'|'AGG_SORTED'|'AGG_HASHED'|'AGG_MIXED'
 
 
@@ -285,7 +295,7 @@ export interface AlterSubscriptionStmt {
   publication?: Node[]
   options?: Node[]
 }
-
+      
 export type AlterSubscriptionType = 'ALTER_SUBSCRIPTION_OPTIONS'|'ALTER_SUBSCRIPTION_CONNECTION'|'ALTER_SUBSCRIPTION_PUBLICATION'|'ALTER_SUBSCRIPTION_REFRESH'|'ALTER_SUBSCRIPTION_ENABLED'
 
 
@@ -322,10 +332,10 @@ export interface AlterTableStmt {
   relkind?: ObjectType
   missingOk?: Boolean
 }
-
+      
 export type AlterTableType = 'AT_AddColumn'|'AT_AddColumnRecurse'|'AT_AddColumnToView'|'AT_ColumnDefault'|'AT_DropNotNull'|'AT_SetNotNull'|'AT_SetStatistics'|'AT_SetOptions'|'AT_ResetOptions'|'AT_SetStorage'|'AT_DropColumn'|'AT_DropColumnRecurse'|'AT_AddIndex'|'AT_ReAddIndex'|'AT_AddConstraint'|'AT_AddConstraintRecurse'|'AT_ReAddConstraint'|'AT_AlterConstraint'|'AT_ValidateConstraint'|'AT_ValidateConstraintRecurse'|'AT_ProcessedConstraint'|'AT_AddIndexConstraint'|'AT_DropConstraint'|'AT_DropConstraintRecurse'|'AT_ReAddComment'|'AT_AlterColumnType'|'AT_AlterColumnGenericOptions'|'AT_ChangeOwner'|'AT_ClusterOn'|'AT_DropCluster'|'AT_SetLogged'|'AT_SetUnLogged'|'AT_AddOids'|'AT_AddOidsRecurse'|'AT_DropOids'|'AT_SetTableSpace'|'AT_SetRelOptions'|'AT_ResetRelOptions'|'AT_ReplaceRelOptions'|'AT_EnableTrig'|'AT_EnableAlwaysTrig'|'AT_EnableReplicaTrig'|'AT_DisableTrig'|'AT_EnableTrigAll'|'AT_DisableTrigAll'|'AT_EnableTrigUser'|'AT_DisableTrigUser'|'AT_EnableRule'|'AT_EnableAlwaysRule'|'AT_EnableReplicaRule'|'AT_DisableRule'|'AT_AddInherit'|'AT_DropInherit'|'AT_AddOf'|'AT_DropOf'|'AT_ReplicaIdentity'|'AT_EnableRowSecurity'|'AT_DisableRowSecurity'|'AT_ForceRowSecurity'|'AT_NoForceRowSecurity'|'AT_GenericOptions'|'AT_AttachPartition'|'AT_DetachPartition'|'AT_AddIdentity'|'AT_SetIdentity'|'AT_DropIdentity'
 
-
+      
 export type AlterTSConfigType = 'ALTER_TSCONFIG_ADD_MAPPING'|'ALTER_TSCONFIG_ALTER_MAPPING_FOR_TOKEN'|'ALTER_TSCONFIG_REPLACE_DICT'|'ALTER_TSCONFIG_REPLACE_DICT_FOR_TOKEN'|'ALTER_TSCONFIG_DROP_MAPPING'
 
 
@@ -404,10 +414,10 @@ export interface BoolExpr {
   args?: Node[]
   location?: GoInt
 }
-
+      
 export type BoolExprType = 'AND_EXPR'|'OR_EXPR'
 
-
+      
 export type BoolTestType = 'IS_TRUE'|'IS_NOT_TRUE'
 
 
@@ -455,7 +465,7 @@ export interface ClusterStmt {
   indexname?: string
   verbose?: Boolean
 }
-
+      
 export type CmdType = 'CMD_UNKNOWN'|'CMD_SELECT'|'CMD_UPDATE'|'CMD_INSERT'|'CMD_DELETE'|'CMD_UTILITY'|'CMD_NOTHING'
 
 
@@ -493,10 +503,10 @@ export interface CoerceViaIO {
   coerceformat?: CoercionForm
   location?: GoInt
 }
-
+      
 export type CoercionContext = 'COERCION_IMPLICIT'|'COERCION_ASSIGNMENT'|'COERCION_EXPLICIT'
 
-
+      
 export type CoercionForm = 'COERCE_EXPLICIT_CALL'|'COERCE_EXPLICIT_CAST'|'COERCE_IMPLICIT_CAST'
 
 
@@ -572,7 +582,7 @@ export interface Const {
   constbyval?: Boolean
   location?: GoInt
 }
-
+      
 export type ConstrType = 'CONSTR_NULL'|'CONSTR_NOTNULL'|'CONSTR_DEFAULT'|'CONSTR_IDENTITY'|'CONSTR_CHECK'|'CONSTR_PRIMARY'|'CONSTR_UNIQUE'|'CONSTR_EXCLUSION'|'CONSTR_FOREIGN'|'CONSTR_ATTR_DEFERRABLE'|'CONSTR_ATTR_NOT_DEFERRABLE'|'CONSTR_ATTR_DEFERRED'|'CONSTR_ATTR_IMMEDIATE'
 
 
@@ -609,7 +619,7 @@ export interface ConstraintsSetStmt {
   constraints?: Node[]
   deferred?: Boolean
 }
-
+      
 export type Context = 'Context_None'|'Context_True'|'Context_False'|'Context_Select'|'Context_Update'|'Context_AConst'|'Context_FuncCall'|'Context_TypeName'|'Context_Operator'
 
 
@@ -888,7 +898,7 @@ export interface DefElem {
   defaction?: DefElemAction
   location?: GoInt
 }
-
+      
 export type DefElemAction = 'DEFELEM_UNSPEC'|'DEFELEM_SET'|'DEFELEM_ADD'|'DEFELEM_DROP'
 
 
@@ -908,7 +918,7 @@ export interface DeleteStmt {
   returningList?: Node[]
   withClause?: WithClause
 }
-
+      
 export type DiscardMode = 'DISCARD_ALL'|'DISCARD_PLANS'|'DISCARD_SEQUENCES'|'DISCARD_TEMP'
 
 
@@ -919,7 +929,7 @@ export interface DiscardStmt {
 export interface DoStmt {
   args?: Node[]
 }
-
+      
 export type DropBehavior = 'DROP_RESTRICT'|'DROP_CASCADE'
 
 
@@ -976,7 +986,7 @@ export interface ExplainStmt {
 export interface Expr {
 
 }
-
+      
 export type FetchDirection = 'FETCH_FORWARD'|'FETCH_BACKWARD'|'FETCH_ABSOLUTE'|'FETCH_RELATIVE'
 
 
@@ -1045,10 +1055,10 @@ export interface FunctionParameter {
   mode?: FunctionParameterMode
   defexpr?: Node
 }
-
+      
 export type FunctionParameterMode = 'FUNC_PARAM_IN'|'FUNC_PARAM_OUT'|'FUNC_PARAM_INOUT'|'FUNC_PARAM_VARIADIC'|'FUNC_PARAM_TABLE'
 
-
+      
 export type GrantObjectType = 'ACL_OBJECT_COLUMN'|'ACL_OBJECT_RELATION'|'ACL_OBJECT_SEQUENCE'|'ACL_OBJECT_DATABASE'|'ACL_OBJECT_DOMAIN'|'ACL_OBJECT_FDW'|'ACL_OBJECT_FOREIGN_SERVER'|'ACL_OBJECT_FUNCTION'|'ACL_OBJECT_LANGUAGE'|'ACL_OBJECT_LARGEOBJECT'|'ACL_OBJECT_NAMESPACE'|'ACL_OBJECT_TABLESPACE'|'ACL_OBJECT_TYPE'
 
 
@@ -1071,7 +1081,7 @@ export interface GrantStmt {
   grantOption?: Boolean
   behavior?: DropBehavior
 }
-
+      
 export type GrantTargetType = 'ACL_TARGET_OBJECT'|'ACL_TARGET_ALL_IN_SCHEMA'|'ACL_TARGET_DEFAULTS'
 
 
@@ -1089,7 +1099,7 @@ export interface GroupingSet {
   content?: Node[]
   location?: GoInt
 }
-
+      
 export type GroupingSetKind = 'GROUPING_SET_EMPTY'|'GROUPING_SET_SIMPLE'|'GROUPING_SET_ROLLUP'|'GROUPING_SET_CUBE'|'GROUPING_SET_SETS'
 
 
@@ -1101,7 +1111,7 @@ export interface ImportForeignSchemaStmt {
   tableList?: Node[]
   options?: Node[]
 }
-
+      
 export type ImportForeignSchemaType = 'FDW_IMPORT_SCHEMA_ALL'|'FDW_IMPORT_SCHEMA_LIMIT_TO'|'FDW_IMPORT_SCHEMA_EXCEPT'
 
 
@@ -1191,10 +1201,10 @@ export interface JoinExpr {
   alias?: Alias
   rtindex?: GoInt
 }
-
+      
 export type JoinType = 'JOIN_INNER'|'JOIN_LEFT'|'JOIN_FULL'|'JOIN_RIGHT'|'JOIN_SEMI'|'JOIN_ANTI'|'JOIN_UNIQUE_OUTER'|'JOIN_UNIQUE_INNER'
 
-
+      
 export type LimitOption = 'LIMIT_OPTION_DEFAULT'|'LIMIT_OPTION_COUNT'
 
 
@@ -1209,7 +1219,7 @@ export interface ListenStmt {
 export interface LoadStmt {
   filename?: string
 }
-
+      
 export type LockClauseStrength = 'LCS_NONE'|'LCS_FORKEYSHARE'|'LCS_FORSHARE'|'LCS_FORNOKEYUPDATE'|'LCS_FORUPDATE'
 
 
@@ -1218,7 +1228,7 @@ export interface LockStmt {
   mode?: GoInt
   nowait?: Boolean
 }
-
+      
 export type LockWaitPolicy = 'LockWaitBlock'|'LockWaitSkip'|'LockWaitError'
 
 
@@ -1237,7 +1247,7 @@ export interface MinMaxExpr {
   args?: Node[]
   location?: GoInt
 }
-
+      
 export type MinMaxOp = 'IS_GREATEST'|'IS_LEAST'
 
 
@@ -1281,10 +1291,10 @@ export interface NullTest {
   argisrow?: Boolean
   location?: GoInt
 }
-
+      
 export type NullTestType = 'IS_NULL'|'IS_NOT_NULL'
 
-
+      
 export type ObjectType = 'OBJECT_ACCESS_METHOD'|'OBJECT_AGGREGATE'|'OBJECT_AMOP'|'OBJECT_AMPROC'|'OBJECT_ATTRIBUTE'|'OBJECT_CAST'|'OBJECT_COLUMN'|'OBJECT_COLLATION'|'OBJECT_CONVERSION'|'OBJECT_DATABASE'|'OBJECT_DEFAULT'|'OBJECT_DEFACL'|'OBJECT_DOMAIN'|'OBJECT_DOMCONSTRAINT'|'OBJECT_EVENT_TRIGGER'|'OBJECT_EXTENSION'|'OBJECT_FDW'|'OBJECT_FOREIGN_SERVER'|'OBJECT_FOREIGN_TABLE'|'OBJECT_FUNCTION'|'OBJECT_INDEX'|'OBJECT_LANGUAGE'|'OBJECT_LARGEOBJECT'|'OBJECT_MATVIEW'|'OBJECT_OPCLASS'|'OBJECT_OPERATOR'|'OBJECT_OPFAMILY'|'OBJECT_POLICY'|'OBJECT_PUBLICATION'|'OBJECT_PUBLICATION_REL'|'OBJECT_ROLE'|'OBJECT_RULE'|'OBJECT_SCHEMA'|'OBJECT_SEQUENCE'|'OBJECT_SUBSCRIPTION'|'OBJECT_STATISTIC_EXT'|'OBJECT_TABCONSTRAINT'|'OBJECT_TABLE'|'OBJECT_TABLESPACE'|'OBJECT_TRANSFORM'|'OBJECT_TRIGGER'|'OBJECT_TSCONFIGURATION'|'OBJECT_TSDICTIONARY'|'OBJECT_TSPARSER'|'OBJECT_TSTEMPLATE'|'OBJECT_TYPE'|'OBJECT_USER_MAPPING'|'OBJECT_VIEW'
 
 
@@ -1293,10 +1303,10 @@ export interface ObjectWithArgs {
   objargs?: Node[]
   argsUnspecified?: Boolean
 }
-
+      
 export type OnCommitAction = 'ONCOMMIT_NOOP'|'ONCOMMIT_PRESERVE_ROWS'|'ONCOMMIT_DELETE_ROWS'|'ONCOMMIT_DROP'
 
-
+      
 export type OnConflictAction = 'ONCONFLICT_NONE'|'ONCONFLICT_NOTHING'|'ONCONFLICT_UPDATE'
 
 
@@ -1330,7 +1340,7 @@ export interface OpExpr {
   args?: Node[]
   location?: GoInt
 }
-
+      
 export type OverridingKind = 'OVERRIDING_NOT_SET'|'OVERRIDING_USER_VALUE'|'OVERRIDING_SYSTEM_VALUE'
 
 
@@ -1356,7 +1366,7 @@ export interface ParamExternData {
   pflags?: GoUint16
   ptype?: Oid
 }
-
+      
 export type ParamKind = 'PARAM_EXTERN'|'PARAM_EXEC'|'PARAM_SUBLINK'|'PARAM_MULTIEXPR'
 
 
@@ -1398,7 +1408,7 @@ export interface PartitionRangeDatum {
   value?: Node
   location?: GoInt
 }
-
+      
 export type PartitionRangeDatumKind = 'PARTITION_RANGE_DATUM_MINVALUE'|'PARTITION_RANGE_DATUM_VALUE'|'PARTITION_RANGE_DATUM_MAXVALUE'
 
 
@@ -1452,7 +1462,7 @@ export interface Query {
   stmtLocation?: GoInt
   stmtLen?: GoInt
 }
-
+      
 export type QuerySource = 'QSRC_ORIGINAL'|'QSRC_PARSER'|'QSRC_INSTEAD_RULE'|'QSRC_QUAL_INSTEAD_RULE'|'QSRC_NON_INSTEAD_RULE'
 
 
@@ -1573,7 +1583,7 @@ export interface RefreshMatViewStmt {
   skipData?: Boolean
   relation?: RangeVar
 }
-
+      
 export type ReindexObjectType = 'REINDEX_OBJECT_INDEX'|'REINDEX_OBJECT_TABLE'|'REINDEX_OBJECT_SCHEMA'|'REINDEX_OBJECT_SYSTEM'|'REINDEX_OBJECT_DATABASE'
 
 
@@ -1622,10 +1632,10 @@ export interface RoleSpec {
   rolename?: string
   location?: GoInt
 }
-
+      
 export type RoleSpecType = 'ROLESPEC_CSTRING'|'ROLESPEC_CURRENT_USER'|'ROLESPEC_SESSION_USER'|'ROLESPEC_PUBLIC'
 
-
+      
 export type RoleStmtType = 'ROLESTMT_ROLE'|'ROLESTMT_USER'|'ROLESTMT_GROUP'
 
 
@@ -1638,7 +1648,7 @@ export interface RowCompareExpr {
   largs?: Node[]
   rargs?: Node[]
 }
-
+      
 export type RowCompareType = 'ROWCOMPARE_LT'|'ROWCOMPARE_LE'|'ROWCOMPARE_EQ'|'ROWCOMPARE_GE'|'ROWCOMPARE_GT'|'ROWCOMPARE_NE'
 
 
@@ -1657,7 +1667,7 @@ export interface RowMarkClause {
   waitPolicy?: LockWaitPolicy
   pushedDown?: Boolean
 }
-
+      
 export type RTEKind = 'RTE_RELATION'|'RTE_SUBQUERY'|'RTE_JOIN'|'RTE_FUNCTION'|'RTE_TABLEFUNC'|'RTE_VALUES'|'RTE_CTE'|'RTE_NAMEDTUPLESTORE'
 
 
@@ -1680,7 +1690,7 @@ export interface ScalarArrayOpExpr {
   args?: Node[]
   location?: GoInt
 }
-
+      
 export type ScanDirection = 'BackwardScanDirection'|'NoMovementScanDirection'|'ForwardScanDirection'
 
 
@@ -1712,13 +1722,13 @@ export interface SelectStmt {
   larg?: SelectStmt
   rarg?: SelectStmt
 }
-
+      
 export type SetOpCmd = 'SETOPCMD_INTERSECT'|'SETOPCMD_INTERSECT_ALL'|'SETOPCMD_EXCEPT'|'SETOPCMD_EXCEPT_ALL'
 
-
+      
 export type SetOpStrategy = 'SETOP_SORTED'|'SETOP_HASHED'
 
-
+      
 export type SetOperation = 'SETOP_NONE'|'SETOP_UNION'|'SETOP_INTERSECT'|'SETOP_EXCEPT'
 
 
@@ -1748,10 +1758,10 @@ export interface SortBy {
   useOp?: Node[]
   location?: GoInt
 }
-
+      
 export type SortByDir = 'SORTBY_DEFAULT'|'SORTBY_ASC'|'SORTBY_DESC'|'SORTBY_USING'
 
-
+      
 export type SortByNulls = 'SORTBY_NULLS_DEFAULT'|'SORTBY_NULLS_FIRST'|'SORTBY_NULLS_LAST'
 
 
@@ -1770,10 +1780,10 @@ export interface SQLValueFunction {
   typmod?: GoInt32
   location?: GoInt
 }
-
+      
 export type SQLValueFunctionOp = 'SVFOP_CURRENT_DATE'|'SVFOP_CURRENT_TIME'|'SVFOP_CURRENT_TIME_N'|'SVFOP_CURRENT_TIMESTAMP'|'SVFOP_CURRENT_TIMESTAMP_N'|'SVFOP_LOCALTIME'|'SVFOP_LOCALTIME_N'|'SVFOP_LOCALTIMESTAMP'|'SVFOP_LOCALTIMESTAMP_N'|'SVFOP_CURRENT_ROLE'|'SVFOP_CURRENT_USER'|'SVFOP_USER'|'SVFOP_SESSION_USER'|'SVFOP_CURRENT_CATALOG'|'SVFOP_CURRENT_SCHEMA'
 
-
+      
 export type StmtType = 'Ack'|'DDL'|'RowsAffected'|'Rows'|'CopyIn'|'Unknown'
 
 
@@ -1790,7 +1800,7 @@ export interface SubLink {
   subselect?: Node
   location?: GoInt
 }
-
+      
 export type SubLinkType = 'EXISTS_SUBLINK'|'ALL_SUBLINK'|'ANY_SUBLINK'|'ROWCOMPARE_SUBLINK'|'EXPR_SUBLINK'|'MULTIEXPR_SUBLINK'|'ARRAY_SUBLINK'|'CTE_SUBLINK'
 
 
@@ -1839,7 +1849,7 @@ export interface TableLikeClause {
   relation?: RangeVar
   options?: GoUint32
 }
-
+      
 export type TableLikeOption = 'CREATE_TABLE_LIKE_DEFAULTS'|'CREATE_TABLE_LIKE_CONSTRAINTS'|'CREATE_TABLE_LIKE_IDENTITY'|'CREATE_TABLE_LIKE_INDEXES'|'CREATE_TABLE_LIKE_STORAGE'|'CREATE_TABLE_LIKE_COMMENTS'|'CREATE_TABLE_LIKE_ALL'
 
 
@@ -1865,7 +1875,7 @@ export interface TransactionStmt {
   options?: Node[]
   gid?: string
 }
-
+      
 export type TransactionStmtKind = 'TRANS_STMT_BEGIN'|'TRANS_STMT_START'|'TRANS_STMT_COMMIT'|'TRANS_STMT_ROLLBACK'|'TRANS_STMT_SAVEPOINT'|'TRANS_STMT_RELEASE'|'TRANS_STMT_ROLLBACK_TO'|'TRANS_STMT_PREPARE'|'TRANS_STMT_COMMIT_PREPARED'|'TRANS_STMT_ROLLBACK_PREPARED'
 
 
@@ -1917,7 +1927,7 @@ export interface DeparseTest {
   expectedParseError?: string
   expectedCompileError?: string
 }
-
+      
 export type VacuumOption = 'VACOPT_VACUUM'|'VACOPT_ANALYZE'|'VACOPT_VERBOSE'|'VACOPT_FREEZE'|'VACOPT_FULL'|'VACOPT_NOWAIT'|'VACOPT_SKIPTOAST'|'VACOPT_DISABLE_PAGE_SKIPPING'
 
 
@@ -1946,7 +1956,7 @@ export interface varattexternal {
   vaValueid?: Oid
   vaToastrelid?: Oid
 }
-
+      
 export type VariableSetKind = 'VAR_SET_VALUE'|'VAR_SET_DEFAULT'|'VAR_SET_CURRENT'|'VAR_SET_MULTI'|'VAR_RESET'|'VAR_RESET_ALL'
 
 
@@ -1960,10 +1970,10 @@ export interface VariableSetStmt {
 export interface VariableShowStmt {
   name?: string
 }
-
+      
 export type VartagExternal = 'VARTAG_INDIRECT'|'VARTAG_EXPANDED_RO'|'VARTAG_EXPANDED_RW'|'VARTAG_ONDISK'
 
-
+      
 export type ViewCheckOption = 'NO_CHECK_OPTION'|'LOCAL_CHECK_OPTION'|'CASCADED_CHECK_OPTION'
 
 
@@ -1975,7 +1985,7 @@ export interface ViewStmt {
   options?: Node[]
   withCheckOption?: ViewCheckOption
 }
-
+      
 export type WCOKind = 'WCO_VIEW_CHECK'|'WCO_RLS_INSERT_CHECK'|'WCO_RLS_UPDATE_CHECK'|'WCO_RLS_CONFLICT_CHECK'
 
 
@@ -2042,10 +2052,10 @@ export interface XmlExpr {
   typmod?: GoInt32
   location?: GoInt
 }
-
+      
 export type XmlExprOp = 'IS_XMLCONCAT'|'IS_XMLELEMENT'|'IS_XMLFOREST'|'IS_XMLPARSE'|'IS_XMLPI'|'IS_XMLROOT'|'IS_XMLSERIALIZE'|'IS_DOCUMENT'
 
-
+      
 export type XmlOptionType = 'XMLOPTION_DOCUMENT'|'XMLOPTION_CONTENT'
 
 
