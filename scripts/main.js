@@ -8,7 +8,37 @@ main()
     console.error(e)
     process.exit(1)
   })
+
 async function main () {
+  const types = await processTypes()
+  await writeAst(types)
+}
+
+async function writeAst (types) {
+
+  for (const type of types) {
+    if (type.type === 'enum') {
+      const enumLines = type.values.map((f, i) => `'${f.value}'`)
+      const enumCode = `
+      
+export type ${type.enumName} = ${enumLines.join('|')}
+`
+      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), enumCode)
+    } else if (type.type === 'struct') {
+      const classDefinition = `
+
+export interface ${type.structName} {
+${type.fields.map(field => `  ${field.name}?: ${field.type}`).join('\n')}
+}`
+      console.log(classDefinition)
+      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), classDefinition)
+
+    }
+  }
+}
+
+async function processTypes () {
+  const result = []
   const configContent = await fs.readFile('./config.txt')
   const config = configContent.toString().split('\n')
   const noahdbPath = config[0]
@@ -21,6 +51,7 @@ import './typedefs'
   for (const file of goFiles) {
     await parseFile(file)
   }
+  return result
   async function parseFile (fileName) {
     console.log(fileName)
     const content = await fs.readFile(path.join(noahdbPath, fileName))
@@ -58,12 +89,11 @@ import './typedefs'
           return w[0].toUpperCase() + w.substr(1)
         }).join('')
       // console.log(enumFields, enumName)
-      const enumLines = enumFields.map((f, i) => `'${f.value}'`)
-      const enumCode = `
-      
-export type ${enumName} = ${enumLines.join('|')}
-`
-      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), enumCode)
+      result.push({
+        type: 'enum',
+        enumName: enumName,
+        values: enumFields
+      })
       return null
     }
     // console.log(struct[0])
@@ -105,15 +135,13 @@ export type ${enumName} = ${enumLines.join('|')}
       } else {
         type = f.type.replaceAll('*', '').replaceAll('_', '')
       }
-      return `  ${f.name[0].toLowerCase() + f.name.substr(1)}?: ${type}`
+      return {name: f.name[0].toLowerCase() + f.name.substr(1), type}
     })
-    const classDefinition = `
-
-export interface ${structName} {
-${typescriptDefinitions.join('\n')}
-}`
-    console.log(classDefinition)
-    await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), classDefinition)
+    result.push({
+      type: 'struct',
+      structName,
+      fields: typescriptDefinitions
+    })
   }
 }
 
