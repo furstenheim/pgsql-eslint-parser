@@ -1,4 +1,3 @@
-
 export type GoByte = string
 export type GoFloat64 = number
 export type GoInt16 = number
@@ -65,19 +64,22 @@ export type BlockNumber = GoUint32
 
 export type BlockId = BlockIdData
 
-
+  
 
 export interface AArrayExpr {
+  type: 'AArrayExpr'
   elements?: Node[]
   location?: GoInt
 }
 
 export interface AConst {
+  type: 'AConst'
   val?: Node
   location?: GoInt
 }
 
 export interface AExpr {
+  type: 'AExpr'
   kind?: AExprKind
   name?: Node[]
   lexpr?: Node
@@ -89,21 +91,25 @@ export type AExprKind = 'AEXPR_OP'|'AEXPR_OP_ANY'|'AEXPR_OP_ALL'|'AEXPR_DISTINCT
 
 
 export interface AIndices {
+  type: 'AIndices'
   isSlice?: Boolean
   lidx?: Node
   uidx?: Node
 }
 
 export interface AIndirection {
+  type: 'AIndirection'
   arg?: Node
   indirection?: Node[]
 }
 
 export interface AStar {
+  type: 'AStar'
 
 }
 
 export interface AccessPriv {
+  type: 'AccessPriv'
   privName?: string
   cols?: Node[]
 }
@@ -115,6 +121,7 @@ export type AggStrategy = 'AGG_PLAIN'|'AGG_SORTED'|'AGG_HASHED'|'AGG_MIXED'
 
 
 export interface Aggref {
+  type: 'Aggref'
   xpr?: Node
   aggfnoid?: Oid
   aggtype?: Oid
@@ -136,30 +143,36 @@ export interface Aggref {
 }
 
 export interface Alias {
+  type: 'Alias'
   aliasname?: string
   colnames?: Node[]
 }
 
 export interface AlterCollationStmt {
+  type: 'AlterCollationStmt'
   collname?: Node[]
 }
 
 export interface AlterDatabaseSetStmt {
+  type: 'AlterDatabaseSetStmt'
   dbname?: string
   setstmt?: VariableSetStmt
 }
 
 export interface AlterDatabaseStmt {
+  type: 'AlterDatabaseStmt'
   dbname?: string
   options?: Node[]
 }
 
 export interface AlterDefaultPrivilegesStmt {
+  type: 'AlterDefaultPrivilegesStmt'
   options?: Node[]
   action?: GrantStmt
 }
 
 export interface AlterDomainStmt {
+  type: 'AlterDomainStmt'
   subtype?: GoByte
   typeName?: Node[]
   name?: string
@@ -169,6 +182,7 @@ export interface AlterDomainStmt {
 }
 
 export interface AlterEnumStmt {
+  type: 'AlterEnumStmt'
   typeName?: Node[]
   oldVal?: string
   newVal?: string
@@ -178,11 +192,13 @@ export interface AlterEnumStmt {
 }
 
 export interface AlterEventTrigStmt {
+  type: 'AlterEventTrigStmt'
   trigname?: string
   tgenabled?: GoByte
 }
 
 export interface AlterExtensionContentsStmt {
+  type: 'AlterExtensionContentsStmt'
   extname?: string
   action?: GoInt
   objtype?: ObjectType
@@ -190,17 +206,20 @@ export interface AlterExtensionContentsStmt {
 }
 
 export interface AlterExtensionStmt {
+  type: 'AlterExtensionStmt'
   extname?: string
   options?: Node[]
 }
 
 export interface AlterFdwStmt {
+  type: 'AlterFdwStmt'
   fdwname?: string
   funcOptions?: Node[]
   options?: Node[]
 }
 
 export interface AlterForeignServerStmt {
+  type: 'AlterForeignServerStmt'
   servername?: string
   version?: string
   options?: Node[]
@@ -208,11 +227,13 @@ export interface AlterForeignServerStmt {
 }
 
 export interface AlterFunctionStmt {
+  type: 'AlterFunctionStmt'
   func?: ObjectWithArgs
   actions?: Node[]
 }
 
 export interface AlterObjectDependsStmt {
+  type: 'AlterObjectDependsStmt'
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -220,6 +241,7 @@ export interface AlterObjectDependsStmt {
 }
 
 export interface AlterObjectSchemaStmt {
+  type: 'AlterObjectSchemaStmt'
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -228,6 +250,7 @@ export interface AlterObjectSchemaStmt {
 }
 
 export interface AlterOpFamilyStmt {
+  type: 'AlterOpFamilyStmt'
   opfamilyname?: Node[]
   amname?: string
   isDrop?: Boolean
@@ -235,11 +258,13 @@ export interface AlterOpFamilyStmt {
 }
 
 export interface AlterOperatorStmt {
+  type: 'AlterOperatorStmt'
   opername?: ObjectWithArgs
   options?: Node[]
 }
 
 export interface AlterOwnerStmt {
+  type: 'AlterOwnerStmt'
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -247,6 +272,7 @@ export interface AlterOwnerStmt {
 }
 
 export interface AlterPolicyStmt {
+  type: 'AlterPolicyStmt'
   policyName?: string
   table?: RangeVar
   roles?: Node[]
@@ -255,6 +281,7 @@ export interface AlterPolicyStmt {
 }
 
 export interface AlterPublicationStmt {
+  type: 'AlterPublicationStmt'
   pubname?: string
   options?: Node[]
   tables?: Node[]
@@ -263,18 +290,21 @@ export interface AlterPublicationStmt {
 }
 
 export interface AlterRoleSetStmt {
+  type: 'AlterRoleSetStmt'
   role?: RoleSpec
   database?: string
   setstmt?: VariableSetStmt
 }
 
 export interface AlterRoleStmt {
+  type: 'AlterRoleStmt'
   role?: RoleSpec
   options?: Node[]
   action?: GoInt
 }
 
 export interface AlterSeqStmt {
+  type: 'AlterSeqStmt'
   sequence?: RangeVar
   options?: Node[]
   forIdentity?: Boolean
@@ -282,6 +312,7 @@ export interface AlterSeqStmt {
 }
 
 export interface AlterSubscriptionStmt {
+  type: 'AlterSubscriptionStmt'
   kind?: AlterSubscriptionType
   subname?: string
   conninfo?: string
@@ -293,10 +324,12 @@ export type AlterSubscriptionType = 'ALTER_SUBSCRIPTION_OPTIONS'|'ALTER_SUBSCRIP
 
 
 export interface AlterSystemStmt {
+  type: 'AlterSystemStmt'
   setstmt?: VariableSetStmt
 }
 
 export interface AlterTableCmd {
+  type: 'AlterTableCmd'
   subtype?: AlterTableType
   name?: string
   newowner?: RoleSpec
@@ -306,6 +339,7 @@ export interface AlterTableCmd {
 }
 
 export interface AlterTableMoveAllStmt {
+  type: 'AlterTableMoveAllStmt'
   origTablespacename?: string
   objtype?: ObjectType
   roles?: Node[]
@@ -314,12 +348,14 @@ export interface AlterTableMoveAllStmt {
 }
 
 export interface AlterTableSpaceOptionsStmt {
+  type: 'AlterTableSpaceOptionsStmt'
   tablespacename?: string
   options?: Node[]
   isReset?: Boolean
 }
 
 export interface AlterTableStmt {
+  type: 'AlterTableStmt'
   relation?: RangeVar
   cmds?: Node[]
   relkind?: ObjectType
@@ -333,6 +369,7 @@ export type AlterTSConfigType = 'ALTER_TSCONFIG_ADD_MAPPING'|'ALTER_TSCONFIG_ALT
 
 
 export interface AlterTSConfigurationStmt {
+  type: 'AlterTSConfigurationStmt'
   kind?: AlterTSConfigType
   cfgname?: Node[]
   tokentype?: Node[]
@@ -343,22 +380,26 @@ export interface AlterTSConfigurationStmt {
 }
 
 export interface AlterTSDictionaryStmt {
+  type: 'AlterTSDictionaryStmt'
   dictname?: Node[]
   options?: Node[]
 }
 
 export interface AlterUserMappingStmt {
+  type: 'AlterUserMappingStmt'
   user?: RoleSpec
   servername?: string
   options?: Node[]
 }
 
 export interface AlternativeSubPlan {
+  type: 'AlternativeSubPlan'
   xpr?: Node
   subplans?: Node[]
 }
 
 export interface ArrayCoerceExpr {
+  type: 'ArrayCoerceExpr'
   xpr?: Node
   arg?: Node
   elemfuncid?: Oid
@@ -371,6 +412,7 @@ export interface ArrayCoerceExpr {
 }
 
 export interface ArrayExpr {
+  type: 'ArrayExpr'
   xpr?: Node
   arrayTypeid?: Oid
   arrayCollid?: Oid
@@ -381,6 +423,7 @@ export interface ArrayExpr {
 }
 
 export interface ArrayRef {
+  type: 'ArrayRef'
   xpr?: Node
   refarraytype?: Oid
   refelemtype?: Oid
@@ -393,15 +436,18 @@ export interface ArrayRef {
 }
 
 export interface BitString {
+  type: 'BitString'
   str?: string
 }
 
 export interface BlockIdData {
+  type: 'BlockIdData'
   biHi?: GoUint16
   biLo?: GoUint16
 }
 
 export interface BoolExpr {
+  type: 'BoolExpr'
   xpr?: Node
   boolop?: BoolExprType
   args?: Node[]
@@ -415,6 +461,7 @@ export type BoolTestType = 'IS_TRUE'|'IS_NOT_TRUE'
 
 
 export interface BooleanTest {
+  type: 'BooleanTest'
   xpr?: Node
   arg?: Node
   booltesttype?: BoolTestType
@@ -422,6 +469,7 @@ export interface BooleanTest {
 }
 
 export interface CaseExpr {
+  type: 'CaseExpr'
   xpr?: Node
   casetype?: Oid
   casecollid?: Oid
@@ -432,6 +480,7 @@ export interface CaseExpr {
 }
 
 export interface CaseTestExpr {
+  type: 'CaseTestExpr'
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -439,6 +488,7 @@ export interface CaseTestExpr {
 }
 
 export interface CaseWhen {
+  type: 'CaseWhen'
   xpr?: Node
   expr?: Node
   result?: Node
@@ -446,14 +496,17 @@ export interface CaseWhen {
 }
 
 export interface CheckPointStmt {
+  type: 'CheckPointStmt'
 
 }
 
 export interface ClosePortalStmt {
+  type: 'ClosePortalStmt'
   portalname?: string
 }
 
 export interface ClusterStmt {
+  type: 'ClusterStmt'
   relation?: RangeVar
   indexname?: string
   verbose?: Boolean
@@ -463,6 +516,7 @@ export type CmdType = 'CMD_UNKNOWN'|'CMD_SELECT'|'CMD_UPDATE'|'CMD_INSERT'|'CMD_
 
 
 export interface CoalesceExpr {
+  type: 'CoalesceExpr'
   xpr?: Node
   coalescetype?: Oid
   coalescecollid?: Oid
@@ -471,6 +525,7 @@ export interface CoalesceExpr {
 }
 
 export interface CoerceToDomain {
+  type: 'CoerceToDomain'
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -481,6 +536,7 @@ export interface CoerceToDomain {
 }
 
 export interface CoerceToDomainValue {
+  type: 'CoerceToDomainValue'
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -489,6 +545,7 @@ export interface CoerceToDomainValue {
 }
 
 export interface CoerceViaIO {
+  type: 'CoerceViaIO'
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -504,12 +561,14 @@ export type CoercionForm = 'COERCE_EXPLICIT_CALL'|'COERCE_EXPLICIT_CAST'|'COERCE
 
 
 export interface CollateClause {
+  type: 'CollateClause'
   arg?: Node
   collname?: Node[]
   location?: GoInt
 }
 
 export interface CollateExpr {
+  type: 'CollateExpr'
   xpr?: Node
   arg?: Node
   collOid?: Oid
@@ -517,6 +576,7 @@ export interface CollateExpr {
 }
 
 export interface ColumnDef {
+  type: 'ColumnDef'
   colname?: string
   typeName?: TypeName
   inhcount?: GoInt
@@ -536,17 +596,20 @@ export interface ColumnDef {
 }
 
 export interface ColumnRef {
+  type: 'ColumnRef'
   fields?: Node[]
   location?: GoInt
 }
 
 export interface CommentStmt {
+  type: 'CommentStmt'
   objtype?: ObjectType
   object?: Node
   comment?: string
 }
 
 export interface CommonTableExpr {
+  type: 'CommonTableExpr'
   ctename?: string
   aliascolnames?: Node[]
   ctequery?: Node
@@ -560,11 +623,13 @@ export interface CommonTableExpr {
 }
 
 export interface CompositeTypeStmt {
+  type: 'CompositeTypeStmt'
   typevar?: RangeVar
   coldeflist?: Node[]
 }
 
 export interface Const {
+  type: 'Const'
   xpr?: Node
   consttype?: Oid
   consttypmod?: GoInt32
@@ -580,6 +645,7 @@ export type ConstrType = 'CONSTR_NULL'|'CONSTR_NOTNULL'|'CONSTR_DEFAULT'|'CONSTR
 
 
 export interface Constraint {
+  type: 'Constraint'
   contype?: ConstrType
   conname?: string
   deferrable?: Boolean
@@ -609,6 +675,7 @@ export interface Constraint {
 }
 
 export interface ConstraintsSetStmt {
+  type: 'ConstraintsSetStmt'
   constraints?: Node[]
   deferred?: Boolean
 }
@@ -617,6 +684,7 @@ export type Context = 'Context_None'|'Context_True'|'Context_False'|'Context_Sel
 
 
 export interface ConvertRowtypeExpr {
+  type: 'ConvertRowtypeExpr'
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -625,6 +693,7 @@ export interface ConvertRowtypeExpr {
 }
 
 export interface CopyStmt {
+  type: 'CopyStmt'
   relation?: RangeVar
   query?: Node
   attlist?: Node[]
@@ -635,12 +704,14 @@ export interface CopyStmt {
 }
 
 export interface CreateAmStmt {
+  type: 'CreateAmStmt'
   amname?: string
   handlerName?: Node[]
   amtype?: GoByte
 }
 
 export interface CreateCastStmt {
+  type: 'CreateCastStmt'
   sourcetype?: TypeName
   targettype?: TypeName
   func?: ObjectWithArgs
@@ -649,6 +720,7 @@ export interface CreateCastStmt {
 }
 
 export interface CreateConversionStmt {
+  type: 'CreateConversionStmt'
   conversionName?: Node[]
   forEncodingName?: string
   toEncodingName?: string
@@ -657,6 +729,7 @@ export interface CreateConversionStmt {
 }
 
 export interface CreateDomainStmt {
+  type: 'CreateDomainStmt'
   domainname?: Node[]
   typeName?: TypeName
   collClause?: CollateClause
@@ -664,11 +737,13 @@ export interface CreateDomainStmt {
 }
 
 export interface CreateEnumStmt {
+  type: 'CreateEnumStmt'
   typeName?: Node[]
   vals?: Node[]
 }
 
 export interface CreateEventTrigStmt {
+  type: 'CreateEventTrigStmt'
   trigname?: string
   eventname?: string
   whenclause?: Node[]
@@ -676,18 +751,21 @@ export interface CreateEventTrigStmt {
 }
 
 export interface CreateExtensionStmt {
+  type: 'CreateExtensionStmt'
   extname?: string
   ifNotExists?: Boolean
   options?: Node[]
 }
 
 export interface CreateFdwStmt {
+  type: 'CreateFdwStmt'
   fdwname?: string
   funcOptions?: Node[]
   options?: Node[]
 }
 
 export interface CreateForeignServerStmt {
+  type: 'CreateForeignServerStmt'
   servername?: string
   servertype?: string
   version?: string
@@ -697,12 +775,14 @@ export interface CreateForeignServerStmt {
 }
 
 export interface CreateForeignTableStmt {
+  type: 'CreateForeignTableStmt'
   base?: CreateStmt
   servername?: string
   options?: Node[]
 }
 
 export interface CreateFunctionStmt {
+  type: 'CreateFunctionStmt'
   replace?: Boolean
   funcname?: Node[]
   parameters?: Node[]
@@ -712,6 +792,7 @@ export interface CreateFunctionStmt {
 }
 
 export interface CreateOpClassItem {
+  type: 'CreateOpClassItem'
   itemtype?: GoInt
   name?: ObjectWithArgs
   number?: GoInt
@@ -721,6 +802,7 @@ export interface CreateOpClassItem {
 }
 
 export interface CreateOpClassStmt {
+  type: 'CreateOpClassStmt'
   opclassname?: Node[]
   opfamilyname?: Node[]
   amname?: string
@@ -730,11 +812,13 @@ export interface CreateOpClassStmt {
 }
 
 export interface CreateOpFamilyStmt {
+  type: 'CreateOpFamilyStmt'
   opfamilyname?: Node[]
   amname?: string
 }
 
 export interface CreatePLangStmt {
+  type: 'CreatePLangStmt'
   replace?: Boolean
   plname?: string
   plhandler?: Node[]
@@ -744,6 +828,7 @@ export interface CreatePLangStmt {
 }
 
 export interface CreatePolicyStmt {
+  type: 'CreatePolicyStmt'
   policyName?: string
   table?: RangeVar
   cmdName?: string
@@ -754,6 +839,7 @@ export interface CreatePolicyStmt {
 }
 
 export interface CreatePublicationStmt {
+  type: 'CreatePublicationStmt'
   pubname?: string
   options?: Node[]
   tables?: Node[]
@@ -761,17 +847,20 @@ export interface CreatePublicationStmt {
 }
 
 export interface CreateRangeStmt {
+  type: 'CreateRangeStmt'
   typeName?: Node[]
   params?: Node[]
 }
 
 export interface CreateRoleStmt {
+  type: 'CreateRoleStmt'
   stmtType?: RoleStmtType
   role?: string
   options?: Node[]
 }
 
 export interface CreateSchemaStmt {
+  type: 'CreateSchemaStmt'
   schemaname?: string
   authrole?: RoleSpec
   schemaElts?: Node[]
@@ -779,6 +868,7 @@ export interface CreateSchemaStmt {
 }
 
 export interface CreateSeqStmt {
+  type: 'CreateSeqStmt'
   sequence?: RangeVar
   options?: Node[]
   ownerId?: Oid
@@ -787,6 +877,7 @@ export interface CreateSeqStmt {
 }
 
 export interface CreateStatsStmt {
+  type: 'CreateStatsStmt'
   defnames?: Node[]
   statTypes?: Node[]
   exprs?: Node[]
@@ -795,6 +886,7 @@ export interface CreateStatsStmt {
 }
 
 export interface CreateStmt {
+  type: 'CreateStmt'
   relation?: RangeVar
   tableElts?: Node[]
   inhRelations?: Node[]
@@ -809,6 +901,7 @@ export interface CreateStmt {
 }
 
 export interface CreateSubscriptionStmt {
+  type: 'CreateSubscriptionStmt'
   subname?: string
   conninfo?: string
   publication?: Node[]
@@ -816,6 +909,7 @@ export interface CreateSubscriptionStmt {
 }
 
 export interface CreateTableAsStmt {
+  type: 'CreateTableAsStmt'
   query?: Node
   into?: IntoClause
   relkind?: ObjectType
@@ -824,6 +918,7 @@ export interface CreateTableAsStmt {
 }
 
 export interface CreateTableSpaceStmt {
+  type: 'CreateTableSpaceStmt'
   tablespacename?: string
   owner?: RoleSpec
   location?: string
@@ -831,6 +926,7 @@ export interface CreateTableSpaceStmt {
 }
 
 export interface CreateTransformStmt {
+  type: 'CreateTransformStmt'
   replace?: Boolean
   typeName?: TypeName
   lang?: string
@@ -839,6 +935,7 @@ export interface CreateTransformStmt {
 }
 
 export interface CreateTrigStmt {
+  type: 'CreateTrigStmt'
   trigname?: string
   relation?: RangeVar
   funcname?: Node[]
@@ -856,6 +953,7 @@ export interface CreateTrigStmt {
 }
 
 export interface CreateUserMappingStmt {
+  type: 'CreateUserMappingStmt'
   user?: RoleSpec
   servername?: string
   ifNotExists?: Boolean
@@ -863,11 +961,13 @@ export interface CreateUserMappingStmt {
 }
 
 export interface CreatedbStmt {
+  type: 'CreatedbStmt'
   dbname?: string
   options?: Node[]
 }
 
 export interface CurrentOfExpr {
+  type: 'CurrentOfExpr'
   xpr?: Node
   cvarno?: Index
   cursorName?: string
@@ -875,16 +975,19 @@ export interface CurrentOfExpr {
 }
 
 export interface DeallocateStmt {
+  type: 'DeallocateStmt'
   name?: string
 }
 
 export interface DeclareCursorStmt {
+  type: 'DeclareCursorStmt'
   portalname?: string
   options?: GoInt
   query?: Node
 }
 
 export interface DefElem {
+  type: 'DefElem'
   defnamespace?: string
   defname?: string
   arg?: Node
@@ -896,6 +999,7 @@ export type DefElemAction = 'DEFELEM_UNSPEC'|'DEFELEM_SET'|'DEFELEM_ADD'|'DEFELE
 
 
 export interface DefineStmt {
+  type: 'DefineStmt'
   kind?: ObjectType
   oldstyle?: Boolean
   defnames?: Node[]
@@ -905,6 +1009,7 @@ export interface DefineStmt {
 }
 
 export interface DeleteStmt {
+  type: 'DeleteStmt'
   relation?: RangeVar
   usingClause?: Node[]
   whereClause?: Node
@@ -916,10 +1021,12 @@ export type DiscardMode = 'DISCARD_ALL'|'DISCARD_PLANS'|'DISCARD_SEQUENCES'|'DIS
 
 
 export interface DiscardStmt {
+  type: 'DiscardStmt'
   target?: DiscardMode
 }
 
 export interface DoStmt {
+  type: 'DoStmt'
   args?: Node[]
 }
       
@@ -927,16 +1034,19 @@ export type DropBehavior = 'DROP_RESTRICT'|'DROP_CASCADE'
 
 
 export interface DropOwnedStmt {
+  type: 'DropOwnedStmt'
   roles?: Node[]
   behavior?: DropBehavior
 }
 
 export interface DropRoleStmt {
+  type: 'DropRoleStmt'
   roles?: Node[]
   missingOk?: Boolean
 }
 
 export interface DropStmt {
+  type: 'DropStmt'
   objects?: Node[]
   removeType?: ObjectType
   behavior?: DropBehavior
@@ -945,38 +1055,45 @@ export interface DropStmt {
 }
 
 export interface DropSubscriptionStmt {
+  type: 'DropSubscriptionStmt'
   subname?: string
   missingOk?: Boolean
   behavior?: DropBehavior
 }
 
 export interface DropTableSpaceStmt {
+  type: 'DropTableSpaceStmt'
   tablespacename?: string
   missingOk?: Boolean
 }
 
 export interface DropUserMappingStmt {
+  type: 'DropUserMappingStmt'
   user?: RoleSpec
   servername?: string
   missingOk?: Boolean
 }
 
 export interface DropdbStmt {
+  type: 'DropdbStmt'
   dbname?: string
   missingOk?: Boolean
 }
 
 export interface ExecuteStmt {
+  type: 'ExecuteStmt'
   name?: string
   params?: Node[]
 }
 
 export interface ExplainStmt {
+  type: 'ExplainStmt'
   query?: Node
   options?: Node[]
 }
 
 export interface Expr {
+  type: 'Expr'
 
 }
       
@@ -984,6 +1101,7 @@ export type FetchDirection = 'FETCH_FORWARD'|'FETCH_BACKWARD'|'FETCH_ABSOLUTE'|'
 
 
 export interface FetchStmt {
+  type: 'FetchStmt'
   direction?: FetchDirection
   howMany?: GoInt64
   portalname?: string
@@ -991,6 +1109,7 @@ export interface FetchStmt {
 }
 
 export interface FieldSelect {
+  type: 'FieldSelect'
   xpr?: Node
   arg?: Node
   fieldnum?: AttrNumber
@@ -1000,6 +1119,7 @@ export interface FieldSelect {
 }
 
 export interface FieldStore {
+  type: 'FieldStore'
   xpr?: Node
   arg?: Node
   newvals?: Node[]
@@ -1008,15 +1128,18 @@ export interface FieldStore {
 }
 
 export interface Float {
+  type: 'Float'
   str?: string
 }
 
 export interface FromExpr {
+  type: 'FromExpr'
   fromlist?: Node[]
   quals?: Node
 }
 
 export interface FuncCall {
+  type: 'FuncCall'
   funcname?: Node[]
   args?: Node[]
   aggOrder?: Node[]
@@ -1030,6 +1153,7 @@ export interface FuncCall {
 }
 
 export interface FuncExpr {
+  type: 'FuncExpr'
   xpr?: Node
   funcid?: Oid
   funcresulttype?: Oid
@@ -1043,6 +1167,7 @@ export interface FuncExpr {
 }
 
 export interface FunctionParameter {
+  type: 'FunctionParameter'
   name?: string
   argType?: TypeName
   mode?: FunctionParameterMode
@@ -1056,6 +1181,7 @@ export type GrantObjectType = 'ACL_OBJECT_COLUMN'|'ACL_OBJECT_RELATION'|'ACL_OBJ
 
 
 export interface GrantRoleStmt {
+  type: 'GrantRoleStmt'
   grantedRoles?: Node[]
   granteeRoles?: Node[]
   isGrant?: Boolean
@@ -1065,6 +1191,7 @@ export interface GrantRoleStmt {
 }
 
 export interface GrantStmt {
+  type: 'GrantStmt'
   isGrant?: Boolean
   targtype?: GrantTargetType
   objtype?: GrantObjectType
@@ -1079,6 +1206,7 @@ export type GrantTargetType = 'ACL_TARGET_OBJECT'|'ACL_TARGET_ALL_IN_SCHEMA'|'AC
 
 
 export interface GroupingFunc {
+  type: 'GroupingFunc'
   xpr?: Node
   args?: Node[]
   refs?: Node[]
@@ -1088,6 +1216,7 @@ export interface GroupingFunc {
 }
 
 export interface GroupingSet {
+  type: 'GroupingSet'
   kind?: GroupingSetKind
   content?: Node[]
   location?: GoInt
@@ -1097,6 +1226,7 @@ export type GroupingSetKind = 'GROUPING_SET_EMPTY'|'GROUPING_SET_SIMPLE'|'GROUPI
 
 
 export interface ImportForeignSchemaStmt {
+  type: 'ImportForeignSchemaStmt'
   serverName?: string
   remoteSchema?: string
   localSchema?: string
@@ -1109,6 +1239,7 @@ export type ImportForeignSchemaType = 'FDW_IMPORT_SCHEMA_ALL'|'FDW_IMPORT_SCHEMA
 
 
 export interface IndexElem {
+  type: 'IndexElem'
   name?: string
   expr?: Node
   indexcolname?: string
@@ -1119,6 +1250,7 @@ export interface IndexElem {
 }
 
 export interface IndexStmt {
+  type: 'IndexStmt'
   idxname?: string
   relation?: RangeVar
   accessMethod?: string
@@ -1141,6 +1273,7 @@ export interface IndexStmt {
 }
 
 export interface InferClause {
+  type: 'InferClause'
   indexElems?: Node[]
   whereClause?: Node
   conname?: string
@@ -1148,6 +1281,7 @@ export interface InferClause {
 }
 
 export interface InferenceElem {
+  type: 'InferenceElem'
   xpr?: Node
   expr?: Node
   infercollid?: Oid
@@ -1155,12 +1289,14 @@ export interface InferenceElem {
 }
 
 export interface InlineCodeBlock {
+  type: 'InlineCodeBlock'
   sourceText?: string
   langOid?: Oid
   langIsTrusted?: Boolean
 }
 
 export interface InsertStmt {
+  type: 'InsertStmt'
   relation?: RangeVar
   cols?: Node[]
   selectStmt?: Node
@@ -1171,10 +1307,12 @@ export interface InsertStmt {
 }
 
 export interface Integer {
+  type: 'Integer'
   ival?: GoInt64
 }
 
 export interface IntoClause {
+  type: 'IntoClause'
   rel?: RangeVar
   colNames?: Node[]
   options?: Node[]
@@ -1185,6 +1323,7 @@ export interface IntoClause {
 }
 
 export interface JoinExpr {
+  type: 'JoinExpr'
   jointype?: JoinType
   isNatural?: Boolean
   larg?: Node
@@ -1202,14 +1341,17 @@ export type LimitOption = 'LIMIT_OPTION_DEFAULT'|'LIMIT_OPTION_COUNT'
 
 
 export interface List {
+  type: 'List'
   items?: Node[]
 }
 
 export interface ListenStmt {
+  type: 'ListenStmt'
   conditionname?: string
 }
 
 export interface LoadStmt {
+  type: 'LoadStmt'
   filename?: string
 }
       
@@ -1217,6 +1359,7 @@ export type LockClauseStrength = 'LCS_NONE'|'LCS_FORKEYSHARE'|'LCS_FORSHARE'|'LC
 
 
 export interface LockStmt {
+  type: 'LockStmt'
   relations?: Node[]
   mode?: GoInt
   nowait?: Boolean
@@ -1226,12 +1369,14 @@ export type LockWaitPolicy = 'LockWaitBlock'|'LockWaitSkip'|'LockWaitError'
 
 
 export interface LockingClause {
+  type: 'LockingClause'
   lockedRels?: Node[]
   strength?: LockClauseStrength
   waitPolicy?: LockWaitPolicy
 }
 
 export interface MinMaxExpr {
+  type: 'MinMaxExpr'
   xpr?: Node
   minmaxtype?: Oid
   minmaxcollid?: Oid
@@ -1245,12 +1390,14 @@ export type MinMaxOp = 'IS_GREATEST'|'IS_LEAST'
 
 
 export interface MultiAssignRef {
+  type: 'MultiAssignRef'
   source?: Node
   colno?: GoInt
   ncolumns?: GoInt
 }
 
 export interface NamedArgExpr {
+  type: 'NamedArgExpr'
   xpr?: Node
   arg?: Node
   name?: string
@@ -1259,25 +1406,30 @@ export interface NamedArgExpr {
 }
 
 export interface NextValueExpr {
+  type: 'NextValueExpr'
   xpr?: Node
   seqid?: Oid
   typeId?: Oid
 }
 
 export interface FingerprintHashContext {
+  type: 'FingerprintHashContext'
   hash?: GoHash
 }
 
 export interface NotifyStmt {
+  type: 'NotifyStmt'
   conditionname?: string
   payload?: string
 }
 
 export interface Null {
+  type: 'Null'
 
 }
 
 export interface NullTest {
+  type: 'NullTest'
   xpr?: Node
   arg?: Node
   nulltesttype?: NullTestType
@@ -1292,6 +1444,7 @@ export type ObjectType = 'OBJECT_ACCESS_METHOD'|'OBJECT_AGGREGATE'|'OBJECT_AMOP'
 
 
 export interface ObjectWithArgs {
+  type: 'ObjectWithArgs'
   objname?: Node[]
   objargs?: Node[]
   argsUnspecified?: Boolean
@@ -1304,6 +1457,7 @@ export type OnConflictAction = 'ONCONFLICT_NONE'|'ONCONFLICT_NOTHING'|'ONCONFLIC
 
 
 export interface OnConflictClause {
+  type: 'OnConflictClause'
   action?: OnConflictAction
   infer?: InferClause
   targetList?: Node[]
@@ -1312,6 +1466,7 @@ export interface OnConflictClause {
 }
 
 export interface OnConflictExpr {
+  type: 'OnConflictExpr'
   action?: OnConflictAction
   arbiterElems?: Node[]
   arbiterWhere?: Node
@@ -1323,6 +1478,7 @@ export interface OnConflictExpr {
 }
 
 export interface OpExpr {
+  type: 'OpExpr'
   xpr?: Node
   opno?: Oid
   opfuncid?: Oid
@@ -1338,6 +1494,7 @@ export type OverridingKind = 'OVERRIDING_NOT_SET'|'OVERRIDING_USER_VALUE'|'OVERR
 
 
 export interface Param {
+  type: 'Param'
   xpr?: Node
   paramkind?: ParamKind
   paramid?: GoInt
@@ -1348,12 +1505,14 @@ export interface Param {
 }
 
 export interface ParamExecData {
+  type: 'ParamExecData'
   execPlan?: any
   value?: Datum
   isnull?: Boolean
 }
 
 export interface ParamExternData {
+  type: 'ParamExternData'
   value?: Datum
   isnull?: Boolean
   pflags?: GoUint16
@@ -1364,6 +1523,7 @@ export type ParamKind = 'PARAM_EXTERN'|'PARAM_EXEC'|'PARAM_SUBLINK'|'PARAM_MULTI
 
 
 export interface ParamListInfoData {
+  type: 'ParamListInfoData'
   paramFetchArg?: any
   parserSetupArg?: any
   numParams?: GoInt
@@ -1371,11 +1531,13 @@ export interface ParamListInfoData {
 }
 
 export interface ParamRef {
+  type: 'ParamRef'
   number?: GoInt
   location?: GoInt
 }
 
 export interface PartitionBoundSpec {
+  type: 'PartitionBoundSpec'
   strategy?: GoByte
   listdatums?: Node[]
   lowerdatums?: Node[]
@@ -1384,11 +1546,13 @@ export interface PartitionBoundSpec {
 }
 
 export interface PartitionCmd {
+  type: 'PartitionCmd'
   name?: RangeVar
   bound?: PartitionBoundSpec
 }
 
 export interface PartitionElem {
+  type: 'PartitionElem'
   name?: string
   expr?: Node
   collation?: Node[]
@@ -1397,6 +1561,7 @@ export interface PartitionElem {
 }
 
 export interface PartitionRangeDatum {
+  type: 'PartitionRangeDatum'
   kind?: PartitionRangeDatumKind
   value?: Node
   location?: GoInt
@@ -1406,18 +1571,21 @@ export type PartitionRangeDatumKind = 'PARTITION_RANGE_DATUM_MINVALUE'|'PARTITIO
 
 
 export interface PartitionSpec {
+  type: 'PartitionSpec'
   strategy?: string
   partParams?: Node[]
   location?: GoInt
 }
 
 export interface PrepareStmt {
+  type: 'PrepareStmt'
   name?: string
   argtypes?: Node[]
   query?: Node
 }
 
 export interface Query {
+  type: 'Query'
   commandType?: CmdType
   querySource?: QuerySource
   queryId?: GoUint32
@@ -1460,6 +1628,7 @@ export type QuerySource = 'QSRC_ORIGINAL'|'QSRC_PARSER'|'QSRC_INSTEAD_RULE'|'QSR
 
 
 export interface RangeFunction {
+  type: 'RangeFunction'
   lateral?: Boolean
   ordinality?: Boolean
   isRowsfrom?: Boolean
@@ -1469,12 +1638,14 @@ export interface RangeFunction {
 }
 
 export interface RangeSubselect {
+  type: 'RangeSubselect'
   lateral?: Boolean
   subquery?: Node
   alias?: Alias
 }
 
 export interface RangeTableFunc {
+  type: 'RangeTableFunc'
   lateral?: Boolean
   docexpr?: Node
   rowexpr?: Node
@@ -1485,6 +1656,7 @@ export interface RangeTableFunc {
 }
 
 export interface RangeTableFuncCol {
+  type: 'RangeTableFuncCol'
   colname?: string
   typeName?: TypeName
   forOrdinality?: Boolean
@@ -1495,6 +1667,7 @@ export interface RangeTableFuncCol {
 }
 
 export interface RangeTableSample {
+  type: 'RangeTableSample'
   relation?: Node
   method?: Node[]
   args?: Node[]
@@ -1503,6 +1676,7 @@ export interface RangeTableSample {
 }
 
 export interface RangeTblEntry {
+  type: 'RangeTblEntry'
   rtekind?: RTEKind
   relid?: Oid
   relkind?: GoByte
@@ -1537,6 +1711,7 @@ export interface RangeTblEntry {
 }
 
 export interface RangeTblFunction {
+  type: 'RangeTblFunction'
   funcexpr?: Node
   funccolcount?: GoInt
   funccolnames?: Node[]
@@ -1547,10 +1722,12 @@ export interface RangeTblFunction {
 }
 
 export interface RangeTblRef {
+  type: 'RangeTblRef'
   rtindex?: GoInt
 }
 
 export interface RangeVar {
+  type: 'RangeVar'
   catalogname?: string
   schemaname?: string
   relname?: string
@@ -1561,17 +1738,20 @@ export interface RangeVar {
 }
 
 export interface RawStmt {
+  type: 'RawStmt'
   stmt?: Node
   stmtLocation?: GoInt
   stmtLen?: GoInt
 }
 
 export interface ReassignOwnedStmt {
+  type: 'ReassignOwnedStmt'
   roles?: Node[]
   newrole?: RoleSpec
 }
 
 export interface RefreshMatViewStmt {
+  type: 'RefreshMatViewStmt'
   concurrent?: Boolean
   skipData?: Boolean
   relation?: RangeVar
@@ -1581,6 +1761,7 @@ export type ReindexObjectType = 'REINDEX_OBJECT_INDEX'|'REINDEX_OBJECT_TABLE'|'R
 
 
 export interface ReindexStmt {
+  type: 'ReindexStmt'
   kind?: ReindexObjectType
   relation?: RangeVar
   name?: string
@@ -1588,6 +1769,7 @@ export interface ReindexStmt {
 }
 
 export interface RelabelType {
+  type: 'RelabelType'
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -1598,6 +1780,7 @@ export interface RelabelType {
 }
 
 export interface RenameStmt {
+  type: 'RenameStmt'
   renameType?: ObjectType
   relationType?: ObjectType
   relation?: RangeVar
@@ -1609,11 +1792,13 @@ export interface RenameStmt {
 }
 
 export interface ReplicaIdentityStmt {
+  type: 'ReplicaIdentityStmt'
   identityType?: GoByte
   name?: string
 }
 
 export interface ResTarget {
+  type: 'ResTarget'
   name?: string
   indirection?: Node[]
   val?: Node
@@ -1621,6 +1806,7 @@ export interface ResTarget {
 }
 
 export interface RoleSpec {
+  type: 'RoleSpec'
   roletype?: RoleSpecType
   rolename?: string
   location?: GoInt
@@ -1633,6 +1819,7 @@ export type RoleStmtType = 'ROLESTMT_ROLE'|'ROLESTMT_USER'|'ROLESTMT_GROUP'
 
 
 export interface RowCompareExpr {
+  type: 'RowCompareExpr'
   xpr?: Node
   rctype?: RowCompareType
   opnos?: Node[]
@@ -1646,6 +1833,7 @@ export type RowCompareType = 'ROWCOMPARE_LT'|'ROWCOMPARE_LE'|'ROWCOMPARE_EQ'|'RO
 
 
 export interface RowExpr {
+  type: 'RowExpr'
   xpr?: Node
   args?: Node[]
   rowTypeid?: Oid
@@ -1655,6 +1843,7 @@ export interface RowExpr {
 }
 
 export interface RowMarkClause {
+  type: 'RowMarkClause'
   rti?: Index
   strength?: LockClauseStrength
   waitPolicy?: LockWaitPolicy
@@ -1665,6 +1854,7 @@ export type RTEKind = 'RTE_RELATION'|'RTE_SUBQUERY'|'RTE_JOIN'|'RTE_FUNCTION'|'R
 
 
 export interface RuleStmt {
+  type: 'RuleStmt'
   relation?: RangeVar
   rulename?: string
   whereClause?: Node
@@ -1675,6 +1865,7 @@ export interface RuleStmt {
 }
 
 export interface ScalarArrayOpExpr {
+  type: 'ScalarArrayOpExpr'
   xpr?: Node
   opno?: Oid
   opfuncid?: Oid
@@ -1688,6 +1879,7 @@ export type ScanDirection = 'BackwardScanDirection'|'NoMovementScanDirection'|'F
 
 
 export interface SecLabelStmt {
+  type: 'SecLabelStmt'
   objtype?: ObjectType
   object?: Node
   provider?: string
@@ -1695,6 +1887,7 @@ export interface SecLabelStmt {
 }
 
 export interface SelectStmt {
+  type: 'SelectStmt'
   distinctClause?: Node[]
   intoClause?: IntoClause
   targetList?: Node[]
@@ -1726,6 +1919,7 @@ export type SetOperation = 'SETOP_NONE'|'SETOP_UNION'|'SETOP_INTERSECT'|'SETOP_E
 
 
 export interface SetOperationStmt {
+  type: 'SetOperationStmt'
   op?: SetOperation
   all?: Boolean
   larg?: Node
@@ -1737,6 +1931,7 @@ export interface SetOperationStmt {
 }
 
 export interface SetToDefault {
+  type: 'SetToDefault'
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -1745,6 +1940,7 @@ export interface SetToDefault {
 }
 
 export interface SortBy {
+  type: 'SortBy'
   node?: Node
   sortbyDir?: SortByDir
   sortbyNulls?: SortByNulls
@@ -1759,6 +1955,7 @@ export type SortByNulls = 'SORTBY_NULLS_DEFAULT'|'SORTBY_NULLS_FIRST'|'SORTBY_NU
 
 
 export interface SortGroupClause {
+  type: 'SortGroupClause'
   tleSortGroupRef?: Index
   eqop?: Oid
   sortop?: Oid
@@ -1767,9 +1964,10 @@ export interface SortGroupClause {
 }
 
 export interface SQLValueFunction {
+  type: 'SQLValueFunction'
   xpr?: Node
   op?: SQLValueFunctionOp
-  type?: Oid
+  _type?: Oid
   typmod?: GoInt32
   location?: GoInt
 }
@@ -1781,10 +1979,12 @@ export type StmtType = 'Ack'|'DDL'|'RowsAffected'|'Rows'|'CopyIn'|'Unknown'
 
 
 export interface String {
+  type: 'String'
   str?: string
 }
 
 export interface SubLink {
+  type: 'SubLink'
   xpr?: Node
   subLinkType?: SubLinkType
   subLinkId?: GoInt
@@ -1798,6 +1998,7 @@ export type SubLinkType = 'EXISTS_SUBLINK'|'ALL_SUBLINK'|'ANY_SUBLINK'|'ROWCOMPA
 
 
 export interface SubPlan {
+  type: 'SubPlan'
   xpr?: Node
   subLinkType?: SubLinkType
   testexpr?: Node
@@ -1818,11 +2019,13 @@ export interface SubPlan {
 }
 
 export interface SyntaxTree {
+  type: 'SyntaxTree'
   statements?: Node[]
   query?: string
 }
 
 export interface TableFunc {
+  type: 'TableFunc'
   nsUris?: Node[]
   nsNames?: Node[]
   docexpr?: Node
@@ -1839,6 +2042,7 @@ export interface TableFunc {
 }
 
 export interface TableLikeClause {
+  type: 'TableLikeClause'
   relation?: RangeVar
   options?: GoUint32
 }
@@ -1847,12 +2051,14 @@ export type TableLikeOption = 'CREATE_TABLE_LIKE_DEFAULTS'|'CREATE_TABLE_LIKE_CO
 
 
 export interface TableSampleClause {
+  type: 'TableSampleClause'
   tsmhandler?: Oid
   args?: Node[]
   repeatable?: Node
 }
 
 export interface TargetEntry {
+  type: 'TargetEntry'
   xpr?: Node
   expr?: Node
   resno?: AttrNumber
@@ -1864,6 +2070,7 @@ export interface TargetEntry {
 }
 
 export interface TransactionStmt {
+  type: 'TransactionStmt'
   kind?: TransactionStmtKind
   options?: Node[]
   gid?: string
@@ -1873,24 +2080,28 @@ export type TransactionStmtKind = 'TRANS_STMT_BEGIN'|'TRANS_STMT_START'|'TRANS_S
 
 
 export interface TriggerTransition {
+  type: 'TriggerTransition'
   name?: string
   isNew?: Boolean
   isTable?: Boolean
 }
 
 export interface TruncateStmt {
+  type: 'TruncateStmt'
   relations?: Node[]
   restartSeqs?: Boolean
   behavior?: DropBehavior
 }
 
 export interface TypeCast {
+  type: 'TypeCast'
   arg?: Node
   typeName?: TypeName
   location?: GoInt
 }
 
 export interface TypeName {
+  type: 'TypeName'
   names?: Node[]
   typeOid?: Oid
   setof?: Boolean
@@ -1902,10 +2113,12 @@ export interface TypeName {
 }
 
 export interface UnlistenStmt {
+  type: 'UnlistenStmt'
   conditionname?: string
 }
 
 export interface UpdateStmt {
+  type: 'UpdateStmt'
   relation?: RangeVar
   targetList?: Node[]
   whereClause?: Node
@@ -1915,6 +2128,7 @@ export interface UpdateStmt {
 }
 
 export interface DeparseTest {
+  type: 'DeparseTest'
   query?: string
   expected?: string
   expectedParseError?: string
@@ -1925,12 +2139,14 @@ export type VacuumOption = 'VACOPT_VACUUM'|'VACOPT_ANALYZE'|'VACOPT_VERBOSE'|'VA
 
 
 export interface VacuumStmt {
+  type: 'VacuumStmt'
   options?: GoInt
   relation?: RangeVar
   vaCols?: Node[]
 }
 
 export interface Var {
+  type: 'Var'
   xpr?: Node
   varno?: Index
   varattno?: AttrNumber
@@ -1944,6 +2160,7 @@ export interface Var {
 }
 
 export interface varattexternal {
+  type: 'varattexternal'
   vaRawsize?: GoInt32
   vaExtsize?: GoInt32
   vaValueid?: Oid
@@ -1954,6 +2171,7 @@ export type VariableSetKind = 'VAR_SET_VALUE'|'VAR_SET_DEFAULT'|'VAR_SET_CURRENT
 
 
 export interface VariableSetStmt {
+  type: 'VariableSetStmt'
   kind?: VariableSetKind
   name?: string
   args?: Node[]
@@ -1961,6 +2179,7 @@ export interface VariableSetStmt {
 }
 
 export interface VariableShowStmt {
+  type: 'VariableShowStmt'
   name?: string
 }
       
@@ -1971,6 +2190,7 @@ export type ViewCheckOption = 'NO_CHECK_OPTION'|'LOCAL_CHECK_OPTION'|'CASCADED_C
 
 
 export interface ViewStmt {
+  type: 'ViewStmt'
   view?: RangeVar
   aliases?: Node[]
   query?: Node
@@ -1983,6 +2203,7 @@ export type WCOKind = 'WCO_VIEW_CHECK'|'WCO_RLS_INSERT_CHECK'|'WCO_RLS_UPDATE_CH
 
 
 export interface WindowClause {
+  type: 'WindowClause'
   name?: string
   refname?: string
   partitionClause?: Node[]
@@ -1995,6 +2216,7 @@ export interface WindowClause {
 }
 
 export interface WindowDef {
+  type: 'WindowDef'
   name?: string
   refname?: string
   partitionClause?: Node[]
@@ -2006,6 +2228,7 @@ export interface WindowDef {
 }
 
 export interface WindowFunc {
+  type: 'WindowFunc'
   xpr?: Node
   winfnoid?: Oid
   wintype?: Oid
@@ -2020,6 +2243,7 @@ export interface WindowFunc {
 }
 
 export interface WithCheckOption {
+  type: 'WithCheckOption'
   kind?: WCOKind
   relname?: string
   polname?: string
@@ -2028,12 +2252,14 @@ export interface WithCheckOption {
 }
 
 export interface WithClause {
+  type: 'WithClause'
   ctes?: Node[]
   recursive?: Boolean
   location?: GoInt
 }
 
 export interface XmlExpr {
+  type: 'XmlExpr'
   xpr?: Node
   op?: XmlExprOp
   name?: string
@@ -2041,7 +2267,7 @@ export interface XmlExpr {
   argNames?: Node[]
   args?: Node[]
   xmloption?: XmlOptionType
-  type?: Oid
+  _type?: Oid
   typmod?: GoInt32
   location?: GoInt
 }
@@ -2053,238 +2279,12 @@ export type XmlOptionType = 'XMLOPTION_DOCUMENT'|'XMLOPTION_CONTENT'
 
 
 export interface XmlSerialize {
+  type: 'XmlSerialize'
   xmloption?: XmlOptionType
   expr?: Node
   typeName?: TypeName
   location?: GoInt
 }
-export interface Node {
-    AArrayExpr?: AArrayExpr
-    A_Const?: AConst
-    AExpr?: AExpr
-    AIndices?: AIndices
-    AIndirection?: AIndirection
-    AStar?: AStar
-    AccessPriv?: AccessPriv
-    Aggref?: Aggref
-    Alias?: Alias
-    AlterCollationStmt?: AlterCollationStmt
-    AlterDatabaseSetStmt?: AlterDatabaseSetStmt
-    AlterDatabaseStmt?: AlterDatabaseStmt
-    AlterDefaultPrivilegesStmt?: AlterDefaultPrivilegesStmt
-    AlterDomainStmt?: AlterDomainStmt
-    AlterEnumStmt?: AlterEnumStmt
-    AlterEventTrigStmt?: AlterEventTrigStmt
-    AlterExtensionContentsStmt?: AlterExtensionContentsStmt
-    AlterExtensionStmt?: AlterExtensionStmt
-    AlterFdwStmt?: AlterFdwStmt
-    AlterForeignServerStmt?: AlterForeignServerStmt
-    AlterFunctionStmt?: AlterFunctionStmt
-    AlterObjectDependsStmt?: AlterObjectDependsStmt
-    AlterObjectSchemaStmt?: AlterObjectSchemaStmt
-    AlterOpFamilyStmt?: AlterOpFamilyStmt
-    AlterOperatorStmt?: AlterOperatorStmt
-    AlterOwnerStmt?: AlterOwnerStmt
-    AlterPolicyStmt?: AlterPolicyStmt
-    AlterPublicationStmt?: AlterPublicationStmt
-    AlterRoleSetStmt?: AlterRoleSetStmt
-    AlterRoleStmt?: AlterRoleStmt
-    AlterSeqStmt?: AlterSeqStmt
-    AlterSubscriptionStmt?: AlterSubscriptionStmt
-    AlterSystemStmt?: AlterSystemStmt
-    AlterTableCmd?: AlterTableCmd
-    AlterTableMoveAllStmt?: AlterTableMoveAllStmt
-    AlterTableSpaceOptionsStmt?: AlterTableSpaceOptionsStmt
-    AlterTableStmt?: AlterTableStmt
-    AlterTSConfigurationStmt?: AlterTSConfigurationStmt
-    AlterTSDictionaryStmt?: AlterTSDictionaryStmt
-    AlterUserMappingStmt?: AlterUserMappingStmt
-    AlternativeSubPlan?: AlternativeSubPlan
-    ArrayCoerceExpr?: ArrayCoerceExpr
-    ArrayExpr?: ArrayExpr
-    ArrayRef?: ArrayRef
-    BitString?: BitString
-    BlockIdData?: BlockIdData
-    BoolExpr?: BoolExpr
-    BooleanTest?: BooleanTest
-    CaseExpr?: CaseExpr
-    CaseTestExpr?: CaseTestExpr
-    CaseWhen?: CaseWhen
-    CheckPointStmt?: CheckPointStmt
-    ClosePortalStmt?: ClosePortalStmt
-    ClusterStmt?: ClusterStmt
-    CoalesceExpr?: CoalesceExpr
-    CoerceToDomain?: CoerceToDomain
-    CoerceToDomainValue?: CoerceToDomainValue
-    CoerceViaIO?: CoerceViaIO
-    CollateClause?: CollateClause
-    CollateExpr?: CollateExpr
-    ColumnDef?: ColumnDef
-    ColumnRef?: ColumnRef
-    CommentStmt?: CommentStmt
-    CommonTableExpr?: CommonTableExpr
-    CompositeTypeStmt?: CompositeTypeStmt
-    Const?: Const
-    Constraint?: Constraint
-    ConstraintsSetStmt?: ConstraintsSetStmt
-    ConvertRowtypeExpr?: ConvertRowtypeExpr
-    CopyStmt?: CopyStmt
-    CreateAmStmt?: CreateAmStmt
-    CreateCastStmt?: CreateCastStmt
-    CreateConversionStmt?: CreateConversionStmt
-    CreateDomainStmt?: CreateDomainStmt
-    CreateEnumStmt?: CreateEnumStmt
-    CreateEventTrigStmt?: CreateEventTrigStmt
-    CreateExtensionStmt?: CreateExtensionStmt
-    CreateFdwStmt?: CreateFdwStmt
-    CreateForeignServerStmt?: CreateForeignServerStmt
-    CreateForeignTableStmt?: CreateForeignTableStmt
-    CreateFunctionStmt?: CreateFunctionStmt
-    CreateOpClassItem?: CreateOpClassItem
-    CreateOpClassStmt?: CreateOpClassStmt
-    CreateOpFamilyStmt?: CreateOpFamilyStmt
-    CreatePLangStmt?: CreatePLangStmt
-    CreatePolicyStmt?: CreatePolicyStmt
-    CreatePublicationStmt?: CreatePublicationStmt
-    CreateRangeStmt?: CreateRangeStmt
-    CreateRoleStmt?: CreateRoleStmt
-    CreateSchemaStmt?: CreateSchemaStmt
-    CreateSeqStmt?: CreateSeqStmt
-    CreateStatsStmt?: CreateStatsStmt
-    CreateStmt?: CreateStmt
-    CreateSubscriptionStmt?: CreateSubscriptionStmt
-    CreateTableAsStmt?: CreateTableAsStmt
-    CreateTableSpaceStmt?: CreateTableSpaceStmt
-    CreateTransformStmt?: CreateTransformStmt
-    CreateTrigStmt?: CreateTrigStmt
-    CreateUserMappingStmt?: CreateUserMappingStmt
-    CreatedbStmt?: CreatedbStmt
-    CurrentOfExpr?: CurrentOfExpr
-    DeallocateStmt?: DeallocateStmt
-    DeclareCursorStmt?: DeclareCursorStmt
-    DefElem?: DefElem
-    DefineStmt?: DefineStmt
-    DeleteStmt?: DeleteStmt
-    DiscardStmt?: DiscardStmt
-    DoStmt?: DoStmt
-    DropOwnedStmt?: DropOwnedStmt
-    DropRoleStmt?: DropRoleStmt
-    DropStmt?: DropStmt
-    DropSubscriptionStmt?: DropSubscriptionStmt
-    DropTableSpaceStmt?: DropTableSpaceStmt
-    DropUserMappingStmt?: DropUserMappingStmt
-    DropdbStmt?: DropdbStmt
-    ExecuteStmt?: ExecuteStmt
-    ExplainStmt?: ExplainStmt
-    Expr?: Expr
-    FetchStmt?: FetchStmt
-    FieldSelect?: FieldSelect
-    FieldStore?: FieldStore
-    Float?: Float
-    FromExpr?: FromExpr
-    FuncCall?: FuncCall
-    FuncExpr?: FuncExpr
-    FunctionParameter?: FunctionParameter
-    GrantRoleStmt?: GrantRoleStmt
-    GrantStmt?: GrantStmt
-    GroupingFunc?: GroupingFunc
-    GroupingSet?: GroupingSet
-    ImportForeignSchemaStmt?: ImportForeignSchemaStmt
-    IndexElem?: IndexElem
-    IndexStmt?: IndexStmt
-    InferClause?: InferClause
-    InferenceElem?: InferenceElem
-    InlineCodeBlock?: InlineCodeBlock
-    InsertStmt?: InsertStmt
-    Integer?: Integer
-    IntoClause?: IntoClause
-    JoinExpr?: JoinExpr
-    List?: List
-    ListenStmt?: ListenStmt
-    LoadStmt?: LoadStmt
-    LockStmt?: LockStmt
-    LockingClause?: LockingClause
-    MinMaxExpr?: MinMaxExpr
-    MultiAssignRef?: MultiAssignRef
-    NamedArgExpr?: NamedArgExpr
-    NextValueExpr?: NextValueExpr
-    FingerprintHashContext?: FingerprintHashContext
-    NotifyStmt?: NotifyStmt
-    Null?: Null
-    NullTest?: NullTest
-    ObjectWithArgs?: ObjectWithArgs
-    OnConflictClause?: OnConflictClause
-    OnConflictExpr?: OnConflictExpr
-    OpExpr?: OpExpr
-    Param?: Param
-    ParamExecData?: ParamExecData
-    ParamExternData?: ParamExternData
-    ParamListInfoData?: ParamListInfoData
-    ParamRef?: ParamRef
-    PartitionBoundSpec?: PartitionBoundSpec
-    PartitionCmd?: PartitionCmd
-    PartitionElem?: PartitionElem
-    PartitionRangeDatum?: PartitionRangeDatum
-    PartitionSpec?: PartitionSpec
-    PrepareStmt?: PrepareStmt
-    Query?: Query
-    RangeFunction?: RangeFunction
-    RangeSubselect?: RangeSubselect
-    RangeTableFunc?: RangeTableFunc
-    RangeTableFuncCol?: RangeTableFuncCol
-    RangeTableSample?: RangeTableSample
-    RangeTblEntry?: RangeTblEntry
-    RangeTblFunction?: RangeTblFunction
-    RangeTblRef?: RangeTblRef
-    RangeVar?: RangeVar
-    RawStmt?: RawStmt
-    ReassignOwnedStmt?: ReassignOwnedStmt
-    RefreshMatViewStmt?: RefreshMatViewStmt
-    ReindexStmt?: ReindexStmt
-    RelabelType?: RelabelType
-    RenameStmt?: RenameStmt
-    ReplicaIdentityStmt?: ReplicaIdentityStmt
-    ResTarget?: ResTarget
-    RoleSpec?: RoleSpec
-    RowCompareExpr?: RowCompareExpr
-    RowExpr?: RowExpr
-    RowMarkClause?: RowMarkClause
-    RuleStmt?: RuleStmt
-    ScalarArrayOpExpr?: ScalarArrayOpExpr
-    SecLabelStmt?: SecLabelStmt
-    SelectStmt?: SelectStmt
-    SetOperationStmt?: SetOperationStmt
-    SetToDefault?: SetToDefault
-    SortBy?: SortBy
-    SortGroupClause?: SortGroupClause
-    SQLValueFunction?: SQLValueFunction
-    String?: String
-    SubLink?: SubLink
-    SubPlan?: SubPlan
-    SyntaxTree?: SyntaxTree
-    TableFunc?: TableFunc
-    TableLikeClause?: TableLikeClause
-    TableSampleClause?: TableSampleClause
-    TargetEntry?: TargetEntry
-    TransactionStmt?: TransactionStmt
-    TriggerTransition?: TriggerTransition
-    TruncateStmt?: TruncateStmt
-    TypeCast?: TypeCast
-    TypeName?: TypeName
-    UnlistenStmt?: UnlistenStmt
-    UpdateStmt?: UpdateStmt
-    DeparseTest?: DeparseTest
-    VacuumStmt?: VacuumStmt
-    Var?: Var
-    varattexternal?: varattexternal
-    VariableSetStmt?: VariableSetStmt
-    VariableShowStmt?: VariableShowStmt
-    ViewStmt?: ViewStmt
-    WindowClause?: WindowClause
-    WindowDef?: WindowDef
-    WindowFunc?: WindowFunc
-    WithCheckOption?: WithCheckOption
-    WithClause?: WithClause
-    XmlExpr?: XmlExpr
-    XmlSerialize?: XmlSerialize
-}
+  
+export type Node = AArrayExpr|AConst|AExpr|AIndices|AIndirection|AStar|AccessPriv|Aggref|Alias|AlterCollationStmt|AlterDatabaseSetStmt|AlterDatabaseStmt|AlterDefaultPrivilegesStmt|AlterDomainStmt|AlterEnumStmt|AlterEventTrigStmt|AlterExtensionContentsStmt|AlterExtensionStmt|AlterFdwStmt|AlterForeignServerStmt|AlterFunctionStmt|AlterObjectDependsStmt|AlterObjectSchemaStmt|AlterOpFamilyStmt|AlterOperatorStmt|AlterOwnerStmt|AlterPolicyStmt|AlterPublicationStmt|AlterRoleSetStmt|AlterRoleStmt|AlterSeqStmt|AlterSubscriptionStmt|AlterSystemStmt|AlterTableCmd|AlterTableMoveAllStmt|AlterTableSpaceOptionsStmt|AlterTableStmt|AlterTSConfigurationStmt|AlterTSDictionaryStmt|AlterUserMappingStmt|AlternativeSubPlan|ArrayCoerceExpr|ArrayExpr|ArrayRef|BitString|BlockIdData|BoolExpr|BooleanTest|CaseExpr|CaseTestExpr|CaseWhen|CheckPointStmt|ClosePortalStmt|ClusterStmt|CoalesceExpr|CoerceToDomain|CoerceToDomainValue|CoerceViaIO|CollateClause|CollateExpr|ColumnDef|ColumnRef|CommentStmt|CommonTableExpr|CompositeTypeStmt|Const|Constraint|ConstraintsSetStmt|ConvertRowtypeExpr|CopyStmt|CreateAmStmt|CreateCastStmt|CreateConversionStmt|CreateDomainStmt|CreateEnumStmt|CreateEventTrigStmt|CreateExtensionStmt|CreateFdwStmt|CreateForeignServerStmt|CreateForeignTableStmt|CreateFunctionStmt|CreateOpClassItem|CreateOpClassStmt|CreateOpFamilyStmt|CreatePLangStmt|CreatePolicyStmt|CreatePublicationStmt|CreateRangeStmt|CreateRoleStmt|CreateSchemaStmt|CreateSeqStmt|CreateStatsStmt|CreateStmt|CreateSubscriptionStmt|CreateTableAsStmt|CreateTableSpaceStmt|CreateTransformStmt|CreateTrigStmt|CreateUserMappingStmt|CreatedbStmt|CurrentOfExpr|DeallocateStmt|DeclareCursorStmt|DefElem|DefineStmt|DeleteStmt|DiscardStmt|DoStmt|DropOwnedStmt|DropRoleStmt|DropStmt|DropSubscriptionStmt|DropTableSpaceStmt|DropUserMappingStmt|DropdbStmt|ExecuteStmt|ExplainStmt|Expr|FetchStmt|FieldSelect|FieldStore|Float|FromExpr|FuncCall|FuncExpr|FunctionParameter|GrantRoleStmt|GrantStmt|GroupingFunc|GroupingSet|ImportForeignSchemaStmt|IndexElem|IndexStmt|InferClause|InferenceElem|InlineCodeBlock|InsertStmt|Integer|IntoClause|JoinExpr|List|ListenStmt|LoadStmt|LockStmt|LockingClause|MinMaxExpr|MultiAssignRef|NamedArgExpr|NextValueExpr|FingerprintHashContext|NotifyStmt|Null|NullTest|ObjectWithArgs|OnConflictClause|OnConflictExpr|OpExpr|Param|ParamExecData|ParamExternData|ParamListInfoData|ParamRef|PartitionBoundSpec|PartitionCmd|PartitionElem|PartitionRangeDatum|PartitionSpec|PrepareStmt|Query|RangeFunction|RangeSubselect|RangeTableFunc|RangeTableFuncCol|RangeTableSample|RangeTblEntry|RangeTblFunction|RangeTblRef|RangeVar|RawStmt|ReassignOwnedStmt|RefreshMatViewStmt|ReindexStmt|RelabelType|RenameStmt|ReplicaIdentityStmt|ResTarget|RoleSpec|RowCompareExpr|RowExpr|RowMarkClause|RuleStmt|ScalarArrayOpExpr|SecLabelStmt|SelectStmt|SetOperationStmt|SetToDefault|SortBy|SortGroupClause|SQLValueFunction|String|SubLink|SubPlan|SyntaxTree|TableFunc|TableLikeClause|TableSampleClause|TargetEntry|TransactionStmt|TriggerTransition|TruncateStmt|TypeCast|TypeName|UnlistenStmt|UpdateStmt|DeparseTest|VacuumStmt|Var|varattexternal|VariableSetStmt|VariableShowStmt|ViewStmt|WindowClause|WindowDef|WindowFunc|WithCheckOption|WithClause|XmlExpr|XmlSerialize  
+  

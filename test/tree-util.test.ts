@@ -3,6 +3,7 @@ import { expect } from 'chai'
 import { PGOutput } from '../src/parser/pg-ast/output'
 import { LocationTreeNode } from '../src/types'
 import * as treeUtils from '../src/tree-util'
+import {computeRanges} from '../src/tree-util'
 interface Test {
   input: PGOutput
   only?: boolean
@@ -11,11 +12,8 @@ interface Test {
 mocha.describe('toLocationNode', function () {
   getTests().forEach(function (t, index) {
     ;(t.only === true ? it.only : it)(`Test ${index}`, function () {
-      t.input.query.stmts.forEach(function (s) {
-        s.location = s.stmt_location === undefined ? 0 : s.stmt_location
-      })
-      const locationTree = treeUtils.toLocationTree(t.input)
-      console.log(JSON.stringify(locationTree, null, 2))
+      computeRanges(t.input)
+      // console.log(JSON.stringify(t.input, null, 2))
     })
   })
   function getTests (): Test[] {

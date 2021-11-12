@@ -5,7 +5,7 @@ import * as parser from '../../src/parser/parser'
 import { expect } from 'chai'
 
 const exampleFolder = path.resolve(__dirname, './examples')
-mocha.describe.only('Check AST', function () {
+mocha.describe('Check AST', function () {
   for (const filename of fs.readdirSync(exampleFolder).filter(f => f.endsWith('.input.sql'))) {
     mocha.it(filename, async function () {
       const inputFileName = path.join(exampleFolder, filename)

@@ -1,7 +1,16 @@
 import { Localizable, LocationTreeNode } from './types'
+import {PGOutput} from './parser/pg-ast/output'
 type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
 
-export function toLocationTree (obj: Localizable): LocationTreeNode|null {
+export function computeRanges (pgOutput: PGOutput): void {
+  pgOutput.stmts.forEach(function (s) {
+    s.location = s.stmt_location === undefined ? 0 : s.stmt_location
+  })
+  toLocationTree(pgOutput)
+}
+
+// Modifies input to add range
+function toLocationTree (obj: Localizable): LocationTreeNode|null {
   const node: Optional<LocationTreeNode, 'rangeStart'> = {
     rangeEnd: null,
     originalNode: obj,
@@ -36,5 +45,11 @@ export function toLocationTree (obj: Localizable): LocationTreeNode|null {
   } else {
     return null
   }
+  if (node.children.length > 0) {
+    node.rangeEnd = node.children[node.children.length - 1].rangeEnd
+  } else {
+    node.rangeEnd = node.rangeStart + 1
+  }
+  obj.range = [node.rangeStart, node.rangeEnd as number]
   return node as LocationTreeNode
 }
