@@ -16,12 +16,13 @@ main()
 
 async function main () {
   const types = await processTypes()
-  await writeTransformFunctions(types)
+  const typesByName = _.keyBy(types, 'name')
+  await writeTransformFunctions(types, typesByName)
   await writeAst(types)
   await writeEslintAst(types)
 }
 
-async function writeTransformFunctions (types) {
+async function writeTransformFunctions (types, typesByName) {
   const nodePossibleStructs = []
 
   await fs.writeFile(path.join('./parsedClasses', 'transformation.ts'), `import * as pgAst from './ast'
@@ -39,15 +40,52 @@ ${getCommonTransformations()}
     } else if (type.type === 'struct') {
       nodePossibleStructs.push(type.structName)
 
-      const structCode = `function transform${type.structName} (value: pgAst.${type.structName}): eslintAst.${type.structName} {
+      if (type.locationField === 'location') {
+
+      }
+      const structCode = `function transform${type.structName} (value: pgAst.${type.structName}, parent: eslintAst.Node|null, possibleStart: number): eslintAst.${type.structName} {
   const result : eslintAst.${type.structName} = {
-    type: '${type.structName}'
+    type: '${type.structName}',
+    parent,
+    start: 0,
+    end: 0,
+    loc: {
+      start: {
+        line: 0,
+        column: 0,
+      },
+      end: {
+        line: 0,
+        column: 0,
+      }
+    },
+    range: [0, 0]
   }
+  ${type.locationField === 'location' ? 'const locationStart = value.location' : 'const locationStart = possibleStart'}
+  let locationEnd = locationStart + 1
+   
   ${type.fields.map(function (field) {
-    return `if (value['${field.name}'] !== undefined) {
+    if (!isTypeStruct(field.type, typesByName)) {
+      return `if (value['${field.name}'] !== undefined) {
     result['${field.name === 'type' ? '_type' : field.name}'] = transform${getTransformType(field.type)}(value['${field.name}'])
-  }`
+  }
+  
+  `
+    } else {
+      return `if (value['${field.name}'] !== undefined) {
+    const resultTransform = transform${getTransformType(field.type)}(value['${field.name}'], result, locationStart)
+    if (resultTransform.end > locationEnd) {
+      locationEnd = resultTransform.end
+    }
+    result['${field.name === 'type' ? '_type' : field.name}'] = ${_.includes(['Node[]', 'Node[][]'], field.type) ? 'resultTransform.result' : 'resultTransform'}
+  } `
+    }
 }).join('\n  ')}
+  
+  result.start = locationStart
+  result.range[0] = locationStart
+  result.end = locationEnd
+  result.range[1] = locationEnd 
   return result
 }
 `
@@ -60,7 +98,7 @@ const mapping = {
   ${nodePossibleStructs.map(n => `${structToNodeKey[n] || n}: transform${n}`).join(',\n    ')}
 }
 
-function transformNode (node: pgAst.Node): eslintAst.Node {
+export function transformNode (node: pgAst.Node): eslintAst.Node {
   const keys = Object.keys(node)
   if (keys.length !== 1) {
     console.error('Unexpected keys for node type', keys)
@@ -69,7 +107,6 @@ function transformNode (node: pgAst.Node): eslintAst.Node {
   return mapping[keys[0]](node)
 }  
   `)
-
 }
 
 async function writeEslintAst (types) {
@@ -89,6 +126,20 @@ export type ${type.enumName} = ${enumLines.join('|')}
 
 export interface ${type.structName} {
   type: '${type.structName}'
+  parent: Node|null
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
+    }
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
 ${type.fields.map(field => `  ${field.name === 'type' ? '_type' : field.name}?: ${field.type}`).join('\n')}
 }`
       await fs.appendFile(path.join('./parsedClasses', 'eslint-ast.ts'), classDefinition)
@@ -183,6 +234,7 @@ async function processTypes () {
       // console.log(enumFields, enumName)
       result.push({
         type: 'enum',
+        name: enumName,
         enumName: enumName,
         values: enumFields
       })
@@ -221,21 +273,36 @@ async function processTypes () {
       'interface{}': 'any',
       'hash.Hash': 'GoHash'
     }
-    const typescriptDefinitions = fields.map(function (f) {
+    let locationField = null
+    const typescriptDefinitions = []
+    fields.forEach(function (f) {
       let type
       if (mappings[f.type]) {
         type = mappings[f.type]
       } else {
         type = f.type.replaceAll('*', '').replaceAll('_', '')
       }
-      return { name: f.name[0].toLowerCase() + f.name.substr(1), type }
+
+      if (type === 'location') {
+        locationField = type
+      }
+      typescriptDefinitions.push({ name: f.name[0].toLowerCase() + f.name.substr(1), type })
     })
     result.push({
       type: 'struct',
+      name: structName,
       structName,
-      fields: typescriptDefinitions
+      fields: typescriptDefinitions,
+      locationField
     })
   }
+}
+
+function isTypeStruct (type, typesByName) {
+  if (typesByName[type]) {
+    return typesByName[type].type === 'struct'
+  }
+  return _.includes(type, 'Node[]', 'Node[][]')
 }
 
 function getTransformType (type) {
@@ -313,12 +380,45 @@ function transformBoolean (input: Boolean): Boolean {
   return input
 }
 
-function transformArrayNode (nodes: pgAst.Node[]): eslintAst.Node[] {
-  return nodes.map(n => transformNode(n))
+function transformArrayNode (nodes: pgAst.Node[], parent: eslintAst.Node|null, possibleStart: number): compoundResult<eslintAst.Node[]> {
+  const result: eslintAst.Node[] = []
+  let locationEnd = possibleStart + 1
+  nodes.forEach(function (n) {
+    const transformed = transformNode(n)
+    result.push(transformed)
+    if (transformed.end > locationEnd) {
+      locationEnd = transformed.end
+    }
+  })
+  return {
+    result,
+    end: locationEnd
+  }
 }
 
-function transformMatrixNode (nodes: pgAst.Node[][]): eslintAst.Node[][] {
-  return nodes.map(r => r.map(n => transformNode(n)))
+function transformMatrixNode (nodes: pgAst.Node[][], parent: eslintAst.Node|null, possibleStart: number): compoundResult<eslintAst.Node[][]> {
+  const result: eslintAst.Node[][] = []
+  let locationEnd = possibleStart + 1
+  nodes.forEach(function (r) {
+    const row: eslintAst.Node[] = []
+    r.forEach(function (n) {
+      const transformed = transformNode(n)
+      row.push(transformed)
+      if (transformed.end > locationEnd) {
+        locationEnd = transformed.end
+      }
+    })
+    result.push(row)
+  })
+  return {
+    result,
+    end: locationEnd
+  }
+}
+
+interface compoundResult<T> {
+    result: T
+    end: number
 }
   
 ${identityTypes.map(t => `function transform${t} (value: pgAst.${t}): eslintAst.${t} {
@@ -329,7 +429,6 @@ ${identityTypes.map(t => `function transform${t} (value: pgAst.${t}): eslintAst.
 
 function getCommonTypes () {
   return `export type GoByte = string
-export type GoFloat64 = number
 export type GoInt16 = number
 export type GoInt32 = number
 export type GoInt64 = number
@@ -344,7 +443,7 @@ export type GoUintptr = number
 export type GoHash = number
 export type GoFloat32 = number
 export type GoFloat64 = number
-export type ArrayUint32 = Uint32[]
+export type ArrayUint32 = GoUint32[]
 
 export type AclMode = GoUint32
 

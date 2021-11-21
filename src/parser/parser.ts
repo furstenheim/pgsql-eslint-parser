@@ -2,7 +2,6 @@ import * as ast from './ast'
 import * as parser from 'libpg-query'
 
 import * as util from 'util'
-import { Node } from './pg-ast/Node'
 import {PGOutput} from './pg-ast/output'
 import {computeRanges} from '../tree-util'
 export async function parseForESLint (
@@ -14,7 +13,7 @@ export async function parseForESLint (
     services: {}
   }> {
   const result: PGOutput = await parser.parseQuery(code)
-
+  console.log(result)
   computeRanges(result)
 
   console.log(util.inspect(result, false, null))

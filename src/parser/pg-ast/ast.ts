@@ -1,76 +1,68 @@
 
-type GoByte = string
-type GoFloat64 = number
-type GoInt16 = number
-type GoInt32 = number
-type GoInt64 = number
-type GoUint16 = number
-type GoUint32 = number
-type GoUint64 = number
-type GoInt = number
-type GoOid = number
-type GoOp = number
-type GoRegproc = number
-type GoUintptr = number
-type GoHash = number
+export type GoByte = string
+export type GoInt16 = number
+export type GoInt32 = number
+export type GoInt64 = number
+export type GoUint16 = number
+export type GoUint32 = number
+export type GoUint64 = number
+export type GoInt = number
+export type GoOid = number
+export type GoOp = number
+export type GoRegproc = number
+export type GoUintptr = number
+export type GoHash = number
+export type GoFloat32 = number
+export type GoFloat64 = number
+export type ArrayUint32 = GoUint32[]
 
-type AclMode = GoUint32
+export type AclMode = GoUint32
 
-type DistinctExpr = OpExpr
+export type DistinctExpr = OpExpr
 
-type NullIfExpr = OpExpr
+export type NullIfExpr = OpExpr
 
-type Selectivity = GoFloat64
+export type Selectivity = GoFloat64
 
-type Cost = GoFloat64
+export type Cost = GoFloat64
 
-type ParamListInfo = ParamListInfoData
+export type ParamListInfo = ParamListInfoData
 
-type AttrNumber = GoInt16
+export type AttrNumber = GoInt16
 
-type Pointer = GoByte
+export type Pointer = GoByte
 
-type Index = GoUint64
+export type Index = GoUint64
 
-type Offset = GoInt64
+export type Offset = GoInt64
 
-type regproc = GoOid
+export type regproc = GoOid
 
-type RegProcedure = GoRegproc
+export type RegProcedure = GoRegproc
 
-type TransactionId = GoUint32
+export type TransactionId = GoUint32
 
-type LocalTransactionId = GoUint32
+export type LocalTransactionId = GoUint32
 
-type SubTransactionId = GoUint32
+export type SubTransactionId = GoUint32
 
-type MultiXactId = TransactionId
+export type MultiXactId = TransactionId
 
-type MultiXactOffset = GoUint32
+export type MultiXactOffset = GoUint32
 
-type CommandId = GoUint32
+export type CommandId = GoUint32
 
-type Name = String
+export type Name = String
 
-type Datum = GoUintptr
+export type Datum = GoUintptr
 
-type DatumPtr = Datum
+export type DatumPtr = Datum
 
-type Oid = GoUint64
+export type Oid = GoUint64
 
-type BlockNumber = GoUint32
+export type BlockNumber = GoUint32
 
-type BlockId = BlockIdData
-
-export interface Node {
-  SelectStmt?: SelectStmt
-  A_Const?: AConst
-  Integer?: Integer
-  ColumnRef?: ColumnRef
-  ResTarget?: ResTarget
-  String?: String
-  RangeVar?: RangeVar
-}
+export type BlockId = BlockIdData
 
 
 
@@ -2064,4 +2056,234 @@ export interface XmlSerialize {
   expr?: Node
   typeName?: TypeName
   location?: GoInt
+}
+export interface Node {
+    AArrayExpr?: AArrayExpr
+    A_Const?: AConst
+    AExpr?: AExpr
+    AIndices?: AIndices
+    AIndirection?: AIndirection
+    AStar?: AStar
+    AccessPriv?: AccessPriv
+    Aggref?: Aggref
+    Alias?: Alias
+    AlterCollationStmt?: AlterCollationStmt
+    AlterDatabaseSetStmt?: AlterDatabaseSetStmt
+    AlterDatabaseStmt?: AlterDatabaseStmt
+    AlterDefaultPrivilegesStmt?: AlterDefaultPrivilegesStmt
+    AlterDomainStmt?: AlterDomainStmt
+    AlterEnumStmt?: AlterEnumStmt
+    AlterEventTrigStmt?: AlterEventTrigStmt
+    AlterExtensionContentsStmt?: AlterExtensionContentsStmt
+    AlterExtensionStmt?: AlterExtensionStmt
+    AlterFdwStmt?: AlterFdwStmt
+    AlterForeignServerStmt?: AlterForeignServerStmt
+    AlterFunctionStmt?: AlterFunctionStmt
+    AlterObjectDependsStmt?: AlterObjectDependsStmt
+    AlterObjectSchemaStmt?: AlterObjectSchemaStmt
+    AlterOpFamilyStmt?: AlterOpFamilyStmt
+    AlterOperatorStmt?: AlterOperatorStmt
+    AlterOwnerStmt?: AlterOwnerStmt
+    AlterPolicyStmt?: AlterPolicyStmt
+    AlterPublicationStmt?: AlterPublicationStmt
+    AlterRoleSetStmt?: AlterRoleSetStmt
+    AlterRoleStmt?: AlterRoleStmt
+    AlterSeqStmt?: AlterSeqStmt
+    AlterSubscriptionStmt?: AlterSubscriptionStmt
+    AlterSystemStmt?: AlterSystemStmt
+    AlterTableCmd?: AlterTableCmd
+    AlterTableMoveAllStmt?: AlterTableMoveAllStmt
+    AlterTableSpaceOptionsStmt?: AlterTableSpaceOptionsStmt
+    AlterTableStmt?: AlterTableStmt
+    AlterTSConfigurationStmt?: AlterTSConfigurationStmt
+    AlterTSDictionaryStmt?: AlterTSDictionaryStmt
+    AlterUserMappingStmt?: AlterUserMappingStmt
+    AlternativeSubPlan?: AlternativeSubPlan
+    ArrayCoerceExpr?: ArrayCoerceExpr
+    ArrayExpr?: ArrayExpr
+    ArrayRef?: ArrayRef
+    BitString?: BitString
+    BlockIdData?: BlockIdData
+    BoolExpr?: BoolExpr
+    BooleanTest?: BooleanTest
+    CaseExpr?: CaseExpr
+    CaseTestExpr?: CaseTestExpr
+    CaseWhen?: CaseWhen
+    CheckPointStmt?: CheckPointStmt
+    ClosePortalStmt?: ClosePortalStmt
+    ClusterStmt?: ClusterStmt
+    CoalesceExpr?: CoalesceExpr
+    CoerceToDomain?: CoerceToDomain
+    CoerceToDomainValue?: CoerceToDomainValue
+    CoerceViaIO?: CoerceViaIO
+    CollateClause?: CollateClause
+    CollateExpr?: CollateExpr
+    ColumnDef?: ColumnDef
+    ColumnRef?: ColumnRef
+    CommentStmt?: CommentStmt
+    CommonTableExpr?: CommonTableExpr
+    CompositeTypeStmt?: CompositeTypeStmt
+    Const?: Const
+    Constraint?: Constraint
+    ConstraintsSetStmt?: ConstraintsSetStmt
+    ConvertRowtypeExpr?: ConvertRowtypeExpr
+    CopyStmt?: CopyStmt
+    CreateAmStmt?: CreateAmStmt
+    CreateCastStmt?: CreateCastStmt
+    CreateConversionStmt?: CreateConversionStmt
+    CreateDomainStmt?: CreateDomainStmt
+    CreateEnumStmt?: CreateEnumStmt
+    CreateEventTrigStmt?: CreateEventTrigStmt
+    CreateExtensionStmt?: CreateExtensionStmt
+    CreateFdwStmt?: CreateFdwStmt
+    CreateForeignServerStmt?: CreateForeignServerStmt
+    CreateForeignTableStmt?: CreateForeignTableStmt
+    CreateFunctionStmt?: CreateFunctionStmt
+    CreateOpClassItem?: CreateOpClassItem
+    CreateOpClassStmt?: CreateOpClassStmt
+    CreateOpFamilyStmt?: CreateOpFamilyStmt
+    CreatePLangStmt?: CreatePLangStmt
+    CreatePolicyStmt?: CreatePolicyStmt
+    CreatePublicationStmt?: CreatePublicationStmt
+    CreateRangeStmt?: CreateRangeStmt
+    CreateRoleStmt?: CreateRoleStmt
+    CreateSchemaStmt?: CreateSchemaStmt
+    CreateSeqStmt?: CreateSeqStmt
+    CreateStatsStmt?: CreateStatsStmt
+    CreateStmt?: CreateStmt
+    CreateSubscriptionStmt?: CreateSubscriptionStmt
+    CreateTableAsStmt?: CreateTableAsStmt
+    CreateTableSpaceStmt?: CreateTableSpaceStmt
+    CreateTransformStmt?: CreateTransformStmt
+    CreateTrigStmt?: CreateTrigStmt
+    CreateUserMappingStmt?: CreateUserMappingStmt
+    CreatedbStmt?: CreatedbStmt
+    CurrentOfExpr?: CurrentOfExpr
+    DeallocateStmt?: DeallocateStmt
+    DeclareCursorStmt?: DeclareCursorStmt
+    DefElem?: DefElem
+    DefineStmt?: DefineStmt
+    DeleteStmt?: DeleteStmt
+    DiscardStmt?: DiscardStmt
+    DoStmt?: DoStmt
+    DropOwnedStmt?: DropOwnedStmt
+    DropRoleStmt?: DropRoleStmt
+    DropStmt?: DropStmt
+    DropSubscriptionStmt?: DropSubscriptionStmt
+    DropTableSpaceStmt?: DropTableSpaceStmt
+    DropUserMappingStmt?: DropUserMappingStmt
+    DropdbStmt?: DropdbStmt
+    ExecuteStmt?: ExecuteStmt
+    ExplainStmt?: ExplainStmt
+    Expr?: Expr
+    FetchStmt?: FetchStmt
+    FieldSelect?: FieldSelect
+    FieldStore?: FieldStore
+    Float?: Float
+    FromExpr?: FromExpr
+    FuncCall?: FuncCall
+    FuncExpr?: FuncExpr
+    FunctionParameter?: FunctionParameter
+    GrantRoleStmt?: GrantRoleStmt
+    GrantStmt?: GrantStmt
+    GroupingFunc?: GroupingFunc
+    GroupingSet?: GroupingSet
+    ImportForeignSchemaStmt?: ImportForeignSchemaStmt
+    IndexElem?: IndexElem
+    IndexStmt?: IndexStmt
+    InferClause?: InferClause
+    InferenceElem?: InferenceElem
+    InlineCodeBlock?: InlineCodeBlock
+    InsertStmt?: InsertStmt
+    Integer?: Integer
+    IntoClause?: IntoClause
+    JoinExpr?: JoinExpr
+    List?: List
+    ListenStmt?: ListenStmt
+    LoadStmt?: LoadStmt
+    LockStmt?: LockStmt
+    LockingClause?: LockingClause
+    MinMaxExpr?: MinMaxExpr
+    MultiAssignRef?: MultiAssignRef
+    NamedArgExpr?: NamedArgExpr
+    NextValueExpr?: NextValueExpr
+    FingerprintHashContext?: FingerprintHashContext
+    NotifyStmt?: NotifyStmt
+    Null?: Null
+    NullTest?: NullTest
+    ObjectWithArgs?: ObjectWithArgs
+    OnConflictClause?: OnConflictClause
+    OnConflictExpr?: OnConflictExpr
+    OpExpr?: OpExpr
+    Param?: Param
+    ParamExecData?: ParamExecData
+    ParamExternData?: ParamExternData
+    ParamListInfoData?: ParamListInfoData
+    ParamRef?: ParamRef
+    PartitionBoundSpec?: PartitionBoundSpec
+    PartitionCmd?: PartitionCmd
+    PartitionElem?: PartitionElem
+    PartitionRangeDatum?: PartitionRangeDatum
+    PartitionSpec?: PartitionSpec
+    PrepareStmt?: PrepareStmt
+    Query?: Query
+    RangeFunction?: RangeFunction
+    RangeSubselect?: RangeSubselect
+    RangeTableFunc?: RangeTableFunc
+    RangeTableFuncCol?: RangeTableFuncCol
+    RangeTableSample?: RangeTableSample
+    RangeTblEntry?: RangeTblEntry
+    RangeTblFunction?: RangeTblFunction
+    RangeTblRef?: RangeTblRef
+    RangeVar?: RangeVar
+    RawStmt?: RawStmt
+    ReassignOwnedStmt?: ReassignOwnedStmt
+    RefreshMatViewStmt?: RefreshMatViewStmt
+    ReindexStmt?: ReindexStmt
+    RelabelType?: RelabelType
+    RenameStmt?: RenameStmt
+    ReplicaIdentityStmt?: ReplicaIdentityStmt
+    ResTarget?: ResTarget
+    RoleSpec?: RoleSpec
+    RowCompareExpr?: RowCompareExpr
+    RowExpr?: RowExpr
+    RowMarkClause?: RowMarkClause
+    RuleStmt?: RuleStmt
+    ScalarArrayOpExpr?: ScalarArrayOpExpr
+    SecLabelStmt?: SecLabelStmt
+    SelectStmt?: SelectStmt
+    SetOperationStmt?: SetOperationStmt
+    SetToDefault?: SetToDefault
+    SortBy?: SortBy
+    SortGroupClause?: SortGroupClause
+    SQLValueFunction?: SQLValueFunction
+    String?: String
+    SubLink?: SubLink
+    SubPlan?: SubPlan
+    SyntaxTree?: SyntaxTree
+    TableFunc?: TableFunc
+    TableLikeClause?: TableLikeClause
+    TableSampleClause?: TableSampleClause
+    TargetEntry?: TargetEntry
+    TransactionStmt?: TransactionStmt
+    TriggerTransition?: TriggerTransition
+    TruncateStmt?: TruncateStmt
+    TypeCast?: TypeCast
+    TypeName?: TypeName
+    UnlistenStmt?: UnlistenStmt
+    UpdateStmt?: UpdateStmt
+    DeparseTest?: DeparseTest
+    VacuumStmt?: VacuumStmt
+    Var?: Var
+    varattexternal?: varattexternal
+    VariableSetStmt?: VariableSetStmt
+    VariableShowStmt?: VariableShowStmt
+    ViewStmt?: ViewStmt
+    WindowClause?: WindowClause
+    WindowDef?: WindowDef
+    WindowFunc?: WindowFunc
+    WithCheckOption?: WithCheckOption
+    WithClause?: WithClause
+    XmlExpr?: XmlExpr
+    XmlSerialize?: XmlSerialize
 }

@@ -1,6 +1,5 @@
 
 export type GoByte = string
-export type GoFloat64 = number
 export type GoInt16 = number
 export type GoInt32 = number
 export type GoInt64 = number
@@ -15,7 +14,7 @@ export type GoUintptr = number
 export type GoHash = number
 export type GoFloat32 = number
 export type GoFloat64 = number
-export type ArrayUint32 = Uint32[]
+export type ArrayUint32 = GoUint32[]
 
 export type AclMode = GoUint32
 
