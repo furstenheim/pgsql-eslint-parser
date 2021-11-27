@@ -1,4 +1,4 @@
-import { Node } from './ast'
+import { Node } from './pg-ast'
 
 export interface PGOutput {
   version: number

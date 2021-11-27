@@ -2,39 +2,46 @@ import * as ast from './ast'
 import * as parser from 'libpg-query'
 
 import * as util from 'util'
-import {PGOutput} from './pg-ast/output'
-import {computeRanges} from '../tree-util'
-export async function parseForESLint (
+import { PGOutput } from './output'
+import * as transformation from './transformation'
+import { PostgresProgram } from './ast'
+export function parseForESLint (
   code: string,
   options?: any
-): Promise<{
+): {
     ast: ast.PostgresProgram
-    visitorKeys: string[]
-    services: {}
-  }> {
-  const result: PGOutput = await parser.parseQuery(code)
+    visitorKeys: unknown
+    services: unknown
+  } {
+  const result: PGOutput = parser.parseQuerySync(code)
   console.log(result)
-  computeRanges(result)
+  const root: PostgresProgram = {
+    // TODO fix location and range
+    loc: {
+      start: {
+        line: 1, column: 0
+      },
+      end: {
+        line: 10, column: 10
+      }
+    },
+    range: [1, 30],
+    type: 'Program',
+    queries: [],
+    comments: [],
+    tokens: [],
+    parent: null
+  }
+  root.queries = result.stmts.map(function (statement) {
+    // @ts-expect-error  root is not node TODO fix
+    return transformation.transformNode(statement.stmt, root, statement.stmt_location === undefined ? 0 : statement.stmt_location)
+  })
 
-  console.log(util.inspect(result, false, null))
+  console.log('##########')
+
   return {
     services: {},
-    visitorKeys: ['SelectStatement', 'Integer', 'ColumnRef', 'ResTarget'],
-    ast: {
-      loc: {
-        start: {
-          line: 1, column: 0
-        },
-        end: {
-          line: 10, column: 10
-        }
-      },
-      range: [1, 30],
-      type: 'Program',
-      body: [],
-      comments: [],
-      tokens: [],
-      parent: null
-    }
+    visitorKeys: transformation.visitorKeys,
+    ast: root
   }
 }

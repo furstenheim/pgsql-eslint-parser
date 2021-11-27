@@ -3,6 +3,8 @@ import fs from 'fs-extra'
 import * as mocha from 'mocha'
 import * as parser from '../../src/parser/parser'
 import { expect } from 'chai'
+import * as util from 'util'
+import * as _ from 'lodash'
 
 const exampleFolder = path.resolve(__dirname, './examples')
 mocha.describe('Check AST', function () {
@@ -12,7 +14,9 @@ mocha.describe('Check AST', function () {
       const outputFileName = inputFileName.replace('input.sql', 'output.json')
       const [inputContent, outputContent] = await Promise.all([fs.readFile(inputFileName), fs.readJSON(outputFileName)])
       const parsed = parser.parseForESLint(inputContent.toString())
-      expect(parsed).equal(outputContent)
+      console.log('--')
+      console.log('--', util.inspect(_.omit(parsed, ['visitorKeys']), false, Infinity))
+      // expect(parsed).equal(outputContent) 
     })
   }
 })

@@ -25,10 +25,11 @@ async function main () {
 async function writeTransformFunctions (types, typesByName) {
   const nodePossibleStructs = []
 
-  await fs.writeFile(path.join('./parsedClasses', 'transformation.ts'), `import * as pgAst from './ast'
+  await fs.writeFile(path.join('./parsedClasses', 'transformation.ts'), `import * as pgAst from './pg-ast'
 import * as eslintAst from './eslint-ast'
 ${getCommonTransformations()}  
   `)
+  const visitorKeys = {}
 
   for (const type of types) {
     if (type.type === 'enum') {
@@ -39,10 +40,14 @@ ${getCommonTransformations()}
       await fs.appendFile(path.join('./parsedClasses', 'transformation.ts'), enumCode)
     } else if (type.type === 'struct') {
       nodePossibleStructs.push(type.structName)
+      visitorKeys[type.structName] = []
 
-      if (type.locationField === 'location') {
+      type.fields.forEach(function (field) {
+        if (isTypeStruct(field.type, typesByName)) {
+          visitorKeys[type.structName].push(field.name === 'type' ? '_type' : field.name)
+        }
+      })
 
-      }
       const structCode = `function transform${type.structName} (value: pgAst.${type.structName}, parent: eslintAst.Node|null, possibleStart: number): eslintAst.${type.structName} {
   const result : eslintAst.${type.structName} = {
     type: '${type.structName}',
@@ -98,15 +103,19 @@ const mapping = {
   ${nodePossibleStructs.map(n => `${structToNodeKey[n] || n}: transform${n}`).join(',\n    ')}
 }
 
-export function transformNode (node: pgAst.Node): eslintAst.Node {
+export function transformNode (node: pgAst.Node, parent: eslintAst.Node|null, possibleStart: number): eslintAst.Node {
   const keys = Object.keys(node)
   if (keys.length !== 1) {
     console.error('Unexpected keys for node type', keys)
     throw new Error('Unexpected keys for node')
   }
-  return mapping[keys[0]](node)
-}  
-  `)
+  return mapping[keys[0]](node[keys[0]], parent, possibleStart)
+} 
+
+export const visitorKeys = ${JSON.stringify(visitorKeys, null, 2)}
+visitorKeys['Program'] = ['queries']
+`)
+
 }
 
 async function writeEslintAst (types) {
@@ -154,7 +163,7 @@ export type Node = ${nodePossibleStructs.join('|')}
 }
 
 async function writeAst (types) {
-  await fs.writeFile(path.join('./parsedClasses', 'ast.ts'), getAstHeader())
+  await fs.writeFile(path.join('./parsedClasses', 'pg-ast.ts'), getAstHeader())
   const availableStructs = []
   for (const type of types) {
     if (type.type === 'enum') {
@@ -163,7 +172,7 @@ async function writeAst (types) {
       
 export type ${type.enumName} = ${enumLines.join('|')}
 `
-      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), enumCode)
+      await fs.appendFile(path.join('./parsedClasses', 'pg-ast.ts'), enumCode)
     } else if (type.type === 'struct') {
       availableStructs.push(type.structName)
       const classDefinition = `
@@ -172,7 +181,7 @@ export interface ${type.structName} {
 ${type.fields.map(field => `  ${field.name}?: ${field.type}`).join('\n')}
 }`
       console.log(classDefinition)
-      await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), classDefinition)
+      await fs.appendFile(path.join('./parsedClasses', 'pg-ast.ts'), classDefinition)
     }
   }
   const nodeDefinition = `
@@ -180,7 +189,7 @@ export interface Node {
   ${availableStructs.map(nk => `  ${structToNodeKey[nk] || nk}?: ${nk}`).join('\n  ')}
 }
 `
-  await fs.appendFile(path.join('./parsedClasses', 'ast.ts'), nodeDefinition)
+  await fs.appendFile(path.join('./parsedClasses', 'pg-ast.ts'), nodeDefinition)
 }
 
 async function processTypes () {
@@ -302,7 +311,7 @@ function isTypeStruct (type, typesByName) {
   if (typesByName[type]) {
     return typesByName[type].type === 'struct'
   }
-  return _.includes(type, 'Node[]', 'Node[][]')
+  return _.includes(['Node[]', 'Node[][]', 'Node'], type)
 }
 
 function getTransformType (type) {
@@ -384,7 +393,7 @@ function transformArrayNode (nodes: pgAst.Node[], parent: eslintAst.Node|null, p
   const result: eslintAst.Node[] = []
   let locationEnd = possibleStart + 1
   nodes.forEach(function (n) {
-    const transformed = transformNode(n)
+    const transformed = transformNode(n, parent, possibleStart)
     result.push(transformed)
     if (transformed.end > locationEnd) {
       locationEnd = transformed.end
@@ -402,7 +411,7 @@ function transformMatrixNode (nodes: pgAst.Node[][], parent: eslintAst.Node|null
   nodes.forEach(function (r) {
     const row: eslintAst.Node[] = []
     r.forEach(function (n) {
-      const transformed = transformNode(n)
+      const transformed = transformNode(n, parent, possibleStart)
       row.push(transformed)
       if (transformed.end > locationEnd) {
         locationEnd = transformed.end

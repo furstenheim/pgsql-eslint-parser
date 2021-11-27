@@ -68,19 +68,19 @@ export type BlockId = BlockIdData
 export interface AArrayExpr {
   type: 'AArrayExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   elements?: Node[]
   location?: GoInt
 }
@@ -88,19 +88,19 @@ export interface AArrayExpr {
 export interface AConst {
   type: 'AConst'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   val?: Node
   location?: GoInt
 }
@@ -108,19 +108,19 @@ export interface AConst {
 export interface AExpr {
   type: 'AExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: AExprKind
   name?: Node[]
   lexpr?: Node
@@ -134,19 +134,19 @@ export type AExprKind = 'AEXPR_OP'|'AEXPR_OP_ANY'|'AEXPR_OP_ALL'|'AEXPR_DISTINCT
 export interface AIndices {
   type: 'AIndices'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   isSlice?: Boolean
   lidx?: Node
   uidx?: Node
@@ -155,19 +155,19 @@ export interface AIndices {
 export interface AIndirection {
   type: 'AIndirection'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   arg?: Node
   indirection?: Node[]
 }
@@ -175,38 +175,38 @@ export interface AIndirection {
 export interface AStar {
   type: 'AStar'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
 
 }
 
 export interface AccessPriv {
   type: 'AccessPriv'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   privName?: string
   cols?: Node[]
 }
@@ -220,19 +220,19 @@ export type AggStrategy = 'AGG_PLAIN'|'AGG_SORTED'|'AGG_HASHED'|'AGG_MIXED'
 export interface Aggref {
   type: 'Aggref'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   aggfnoid?: Oid
   aggtype?: Oid
@@ -256,19 +256,19 @@ export interface Aggref {
 export interface Alias {
   type: 'Alias'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   aliasname?: string
   colnames?: Node[]
 }
@@ -276,38 +276,38 @@ export interface Alias {
 export interface AlterCollationStmt {
   type: 'AlterCollationStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   collname?: Node[]
 }
 
 export interface AlterDatabaseSetStmt {
   type: 'AlterDatabaseSetStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   dbname?: string
   setstmt?: VariableSetStmt
 }
@@ -315,19 +315,19 @@ export interface AlterDatabaseSetStmt {
 export interface AlterDatabaseStmt {
   type: 'AlterDatabaseStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   dbname?: string
   options?: Node[]
 }
@@ -335,19 +335,19 @@ export interface AlterDatabaseStmt {
 export interface AlterDefaultPrivilegesStmt {
   type: 'AlterDefaultPrivilegesStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   options?: Node[]
   action?: GrantStmt
 }
@@ -355,19 +355,19 @@ export interface AlterDefaultPrivilegesStmt {
 export interface AlterDomainStmt {
   type: 'AlterDomainStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   subtype?: GoByte
   typeName?: Node[]
   name?: string
@@ -379,19 +379,19 @@ export interface AlterDomainStmt {
 export interface AlterEnumStmt {
   type: 'AlterEnumStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   typeName?: Node[]
   oldVal?: string
   newVal?: string
@@ -403,19 +403,19 @@ export interface AlterEnumStmt {
 export interface AlterEventTrigStmt {
   type: 'AlterEventTrigStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   trigname?: string
   tgenabled?: GoByte
 }
@@ -423,19 +423,19 @@ export interface AlterEventTrigStmt {
 export interface AlterExtensionContentsStmt {
   type: 'AlterExtensionContentsStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   extname?: string
   action?: GoInt
   objtype?: ObjectType
@@ -445,19 +445,19 @@ export interface AlterExtensionContentsStmt {
 export interface AlterExtensionStmt {
   type: 'AlterExtensionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   extname?: string
   options?: Node[]
 }
@@ -465,19 +465,19 @@ export interface AlterExtensionStmt {
 export interface AlterFdwStmt {
   type: 'AlterFdwStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   fdwname?: string
   funcOptions?: Node[]
   options?: Node[]
@@ -486,19 +486,19 @@ export interface AlterFdwStmt {
 export interface AlterForeignServerStmt {
   type: 'AlterForeignServerStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   servername?: string
   version?: string
   options?: Node[]
@@ -508,19 +508,19 @@ export interface AlterForeignServerStmt {
 export interface AlterFunctionStmt {
   type: 'AlterFunctionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   func?: ObjectWithArgs
   actions?: Node[]
 }
@@ -528,19 +528,19 @@ export interface AlterFunctionStmt {
 export interface AlterObjectDependsStmt {
   type: 'AlterObjectDependsStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -550,19 +550,19 @@ export interface AlterObjectDependsStmt {
 export interface AlterObjectSchemaStmt {
   type: 'AlterObjectSchemaStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -573,19 +573,19 @@ export interface AlterObjectSchemaStmt {
 export interface AlterOpFamilyStmt {
   type: 'AlterOpFamilyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   opfamilyname?: Node[]
   amname?: string
   isDrop?: Boolean
@@ -595,19 +595,19 @@ export interface AlterOpFamilyStmt {
 export interface AlterOperatorStmt {
   type: 'AlterOperatorStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   opername?: ObjectWithArgs
   options?: Node[]
 }
@@ -615,19 +615,19 @@ export interface AlterOperatorStmt {
 export interface AlterOwnerStmt {
   type: 'AlterOwnerStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objectType?: ObjectType
   relation?: RangeVar
   object?: Node
@@ -637,19 +637,19 @@ export interface AlterOwnerStmt {
 export interface AlterPolicyStmt {
   type: 'AlterPolicyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   policyName?: string
   table?: RangeVar
   roles?: Node[]
@@ -660,19 +660,19 @@ export interface AlterPolicyStmt {
 export interface AlterPublicationStmt {
   type: 'AlterPublicationStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   pubname?: string
   options?: Node[]
   tables?: Node[]
@@ -683,19 +683,19 @@ export interface AlterPublicationStmt {
 export interface AlterRoleSetStmt {
   type: 'AlterRoleSetStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   role?: RoleSpec
   database?: string
   setstmt?: VariableSetStmt
@@ -704,19 +704,19 @@ export interface AlterRoleSetStmt {
 export interface AlterRoleStmt {
   type: 'AlterRoleStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   role?: RoleSpec
   options?: Node[]
   action?: GoInt
@@ -725,19 +725,19 @@ export interface AlterRoleStmt {
 export interface AlterSeqStmt {
   type: 'AlterSeqStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   sequence?: RangeVar
   options?: Node[]
   forIdentity?: Boolean
@@ -747,19 +747,19 @@ export interface AlterSeqStmt {
 export interface AlterSubscriptionStmt {
   type: 'AlterSubscriptionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: AlterSubscriptionType
   subname?: string
   conninfo?: string
@@ -773,38 +773,38 @@ export type AlterSubscriptionType = 'ALTER_SUBSCRIPTION_OPTIONS'|'ALTER_SUBSCRIP
 export interface AlterSystemStmt {
   type: 'AlterSystemStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   setstmt?: VariableSetStmt
 }
 
 export interface AlterTableCmd {
   type: 'AlterTableCmd'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   subtype?: AlterTableType
   name?: string
   newowner?: RoleSpec
@@ -816,19 +816,19 @@ export interface AlterTableCmd {
 export interface AlterTableMoveAllStmt {
   type: 'AlterTableMoveAllStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   origTablespacename?: string
   objtype?: ObjectType
   roles?: Node[]
@@ -839,19 +839,19 @@ export interface AlterTableMoveAllStmt {
 export interface AlterTableSpaceOptionsStmt {
   type: 'AlterTableSpaceOptionsStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   tablespacename?: string
   options?: Node[]
   isReset?: Boolean
@@ -860,19 +860,19 @@ export interface AlterTableSpaceOptionsStmt {
 export interface AlterTableStmt {
   type: 'AlterTableStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   cmds?: Node[]
   relkind?: ObjectType
@@ -888,19 +888,19 @@ export type AlterTSConfigType = 'ALTER_TSCONFIG_ADD_MAPPING'|'ALTER_TSCONFIG_ALT
 export interface AlterTSConfigurationStmt {
   type: 'AlterTSConfigurationStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: AlterTSConfigType
   cfgname?: Node[]
   tokentype?: Node[]
@@ -913,19 +913,19 @@ export interface AlterTSConfigurationStmt {
 export interface AlterTSDictionaryStmt {
   type: 'AlterTSDictionaryStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   dictname?: Node[]
   options?: Node[]
 }
@@ -933,19 +933,19 @@ export interface AlterTSDictionaryStmt {
 export interface AlterUserMappingStmt {
   type: 'AlterUserMappingStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   user?: RoleSpec
   servername?: string
   options?: Node[]
@@ -954,19 +954,19 @@ export interface AlterUserMappingStmt {
 export interface AlternativeSubPlan {
   type: 'AlternativeSubPlan'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   subplans?: Node[]
 }
@@ -974,19 +974,19 @@ export interface AlternativeSubPlan {
 export interface ArrayCoerceExpr {
   type: 'ArrayCoerceExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   elemfuncid?: Oid
@@ -1001,19 +1001,19 @@ export interface ArrayCoerceExpr {
 export interface ArrayExpr {
   type: 'ArrayExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arrayTypeid?: Oid
   arrayCollid?: Oid
@@ -1026,19 +1026,19 @@ export interface ArrayExpr {
 export interface ArrayRef {
   type: 'ArrayRef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   refarraytype?: Oid
   refelemtype?: Oid
@@ -1053,38 +1053,38 @@ export interface ArrayRef {
 export interface BitString {
   type: 'BitString'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   str?: string
 }
 
 export interface BlockIdData {
   type: 'BlockIdData'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   biHi?: GoUint16
   biLo?: GoUint16
 }
@@ -1092,19 +1092,19 @@ export interface BlockIdData {
 export interface BoolExpr {
   type: 'BoolExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   boolop?: BoolExprType
   args?: Node[]
@@ -1120,19 +1120,19 @@ export type BoolTestType = 'IS_TRUE'|'IS_NOT_TRUE'
 export interface BooleanTest {
   type: 'BooleanTest'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   booltesttype?: BoolTestType
@@ -1142,19 +1142,19 @@ export interface BooleanTest {
 export interface CaseExpr {
   type: 'CaseExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   casetype?: Oid
   casecollid?: Oid
@@ -1167,19 +1167,19 @@ export interface CaseExpr {
 export interface CaseTestExpr {
   type: 'CaseTestExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -1189,19 +1189,19 @@ export interface CaseTestExpr {
 export interface CaseWhen {
   type: 'CaseWhen'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   expr?: Node
   result?: Node
@@ -1211,57 +1211,57 @@ export interface CaseWhen {
 export interface CheckPointStmt {
   type: 'CheckPointStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
 
 }
 
 export interface ClosePortalStmt {
   type: 'ClosePortalStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   portalname?: string
 }
 
 export interface ClusterStmt {
   type: 'ClusterStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   indexname?: string
   verbose?: Boolean
@@ -1273,19 +1273,19 @@ export type CmdType = 'CMD_UNKNOWN'|'CMD_SELECT'|'CMD_UPDATE'|'CMD_INSERT'|'CMD_
 export interface CoalesceExpr {
   type: 'CoalesceExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   coalescetype?: Oid
   coalescecollid?: Oid
@@ -1296,19 +1296,19 @@ export interface CoalesceExpr {
 export interface CoerceToDomain {
   type: 'CoerceToDomain'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -1321,19 +1321,19 @@ export interface CoerceToDomain {
 export interface CoerceToDomainValue {
   type: 'CoerceToDomainValue'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -1344,19 +1344,19 @@ export interface CoerceToDomainValue {
 export interface CoerceViaIO {
   type: 'CoerceViaIO'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -1374,19 +1374,19 @@ export type CoercionForm = 'COERCE_EXPLICIT_CALL'|'COERCE_EXPLICIT_CAST'|'COERCE
 export interface CollateClause {
   type: 'CollateClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   arg?: Node
   collname?: Node[]
   location?: GoInt
@@ -1395,19 +1395,19 @@ export interface CollateClause {
 export interface CollateExpr {
   type: 'CollateExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   collOid?: Oid
@@ -1417,19 +1417,19 @@ export interface CollateExpr {
 export interface ColumnDef {
   type: 'ColumnDef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   colname?: string
   typeName?: TypeName
   inhcount?: GoInt
@@ -1451,19 +1451,19 @@ export interface ColumnDef {
 export interface ColumnRef {
   type: 'ColumnRef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   fields?: Node[]
   location?: GoInt
 }
@@ -1471,19 +1471,19 @@ export interface ColumnRef {
 export interface CommentStmt {
   type: 'CommentStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objtype?: ObjectType
   object?: Node
   comment?: string
@@ -1492,19 +1492,19 @@ export interface CommentStmt {
 export interface CommonTableExpr {
   type: 'CommonTableExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   ctename?: string
   aliascolnames?: Node[]
   ctequery?: Node
@@ -1520,19 +1520,19 @@ export interface CommonTableExpr {
 export interface CompositeTypeStmt {
   type: 'CompositeTypeStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   typevar?: RangeVar
   coldeflist?: Node[]
 }
@@ -1540,19 +1540,19 @@ export interface CompositeTypeStmt {
 export interface Const {
   type: 'Const'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   consttype?: Oid
   consttypmod?: GoInt32
@@ -1570,19 +1570,19 @@ export type ConstrType = 'CONSTR_NULL'|'CONSTR_NOTNULL'|'CONSTR_DEFAULT'|'CONSTR
 export interface Constraint {
   type: 'Constraint'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   contype?: ConstrType
   conname?: string
   deferrable?: Boolean
@@ -1614,19 +1614,19 @@ export interface Constraint {
 export interface ConstraintsSetStmt {
   type: 'ConstraintsSetStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   constraints?: Node[]
   deferred?: Boolean
 }
@@ -1637,19 +1637,19 @@ export type Context = 'Context_None'|'Context_True'|'Context_False'|'Context_Sel
 export interface ConvertRowtypeExpr {
   type: 'ConvertRowtypeExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -1660,19 +1660,19 @@ export interface ConvertRowtypeExpr {
 export interface CopyStmt {
   type: 'CopyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   query?: Node
   attlist?: Node[]
@@ -1685,19 +1685,19 @@ export interface CopyStmt {
 export interface CreateAmStmt {
   type: 'CreateAmStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   amname?: string
   handlerName?: Node[]
   amtype?: GoByte
@@ -1706,19 +1706,19 @@ export interface CreateAmStmt {
 export interface CreateCastStmt {
   type: 'CreateCastStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   sourcetype?: TypeName
   targettype?: TypeName
   func?: ObjectWithArgs
@@ -1729,19 +1729,19 @@ export interface CreateCastStmt {
 export interface CreateConversionStmt {
   type: 'CreateConversionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   conversionName?: Node[]
   forEncodingName?: string
   toEncodingName?: string
@@ -1752,19 +1752,19 @@ export interface CreateConversionStmt {
 export interface CreateDomainStmt {
   type: 'CreateDomainStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   domainname?: Node[]
   typeName?: TypeName
   collClause?: CollateClause
@@ -1774,19 +1774,19 @@ export interface CreateDomainStmt {
 export interface CreateEnumStmt {
   type: 'CreateEnumStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   typeName?: Node[]
   vals?: Node[]
 }
@@ -1794,19 +1794,19 @@ export interface CreateEnumStmt {
 export interface CreateEventTrigStmt {
   type: 'CreateEventTrigStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   trigname?: string
   eventname?: string
   whenclause?: Node[]
@@ -1816,19 +1816,19 @@ export interface CreateEventTrigStmt {
 export interface CreateExtensionStmt {
   type: 'CreateExtensionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   extname?: string
   ifNotExists?: Boolean
   options?: Node[]
@@ -1837,19 +1837,19 @@ export interface CreateExtensionStmt {
 export interface CreateFdwStmt {
   type: 'CreateFdwStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   fdwname?: string
   funcOptions?: Node[]
   options?: Node[]
@@ -1858,19 +1858,19 @@ export interface CreateFdwStmt {
 export interface CreateForeignServerStmt {
   type: 'CreateForeignServerStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   servername?: string
   servertype?: string
   version?: string
@@ -1882,19 +1882,19 @@ export interface CreateForeignServerStmt {
 export interface CreateForeignTableStmt {
   type: 'CreateForeignTableStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   base?: CreateStmt
   servername?: string
   options?: Node[]
@@ -1903,19 +1903,19 @@ export interface CreateForeignTableStmt {
 export interface CreateFunctionStmt {
   type: 'CreateFunctionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   replace?: Boolean
   funcname?: Node[]
   parameters?: Node[]
@@ -1927,19 +1927,19 @@ export interface CreateFunctionStmt {
 export interface CreateOpClassItem {
   type: 'CreateOpClassItem'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   itemtype?: GoInt
   name?: ObjectWithArgs
   number?: GoInt
@@ -1951,19 +1951,19 @@ export interface CreateOpClassItem {
 export interface CreateOpClassStmt {
   type: 'CreateOpClassStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   opclassname?: Node[]
   opfamilyname?: Node[]
   amname?: string
@@ -1975,19 +1975,19 @@ export interface CreateOpClassStmt {
 export interface CreateOpFamilyStmt {
   type: 'CreateOpFamilyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   opfamilyname?: Node[]
   amname?: string
 }
@@ -1995,19 +1995,19 @@ export interface CreateOpFamilyStmt {
 export interface CreatePLangStmt {
   type: 'CreatePLangStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   replace?: Boolean
   plname?: string
   plhandler?: Node[]
@@ -2019,19 +2019,19 @@ export interface CreatePLangStmt {
 export interface CreatePolicyStmt {
   type: 'CreatePolicyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   policyName?: string
   table?: RangeVar
   cmdName?: string
@@ -2044,19 +2044,19 @@ export interface CreatePolicyStmt {
 export interface CreatePublicationStmt {
   type: 'CreatePublicationStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   pubname?: string
   options?: Node[]
   tables?: Node[]
@@ -2066,19 +2066,19 @@ export interface CreatePublicationStmt {
 export interface CreateRangeStmt {
   type: 'CreateRangeStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   typeName?: Node[]
   params?: Node[]
 }
@@ -2086,19 +2086,19 @@ export interface CreateRangeStmt {
 export interface CreateRoleStmt {
   type: 'CreateRoleStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   stmtType?: RoleStmtType
   role?: string
   options?: Node[]
@@ -2107,19 +2107,19 @@ export interface CreateRoleStmt {
 export interface CreateSchemaStmt {
   type: 'CreateSchemaStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   schemaname?: string
   authrole?: RoleSpec
   schemaElts?: Node[]
@@ -2129,19 +2129,19 @@ export interface CreateSchemaStmt {
 export interface CreateSeqStmt {
   type: 'CreateSeqStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   sequence?: RangeVar
   options?: Node[]
   ownerId?: Oid
@@ -2152,19 +2152,19 @@ export interface CreateSeqStmt {
 export interface CreateStatsStmt {
   type: 'CreateStatsStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   defnames?: Node[]
   statTypes?: Node[]
   exprs?: Node[]
@@ -2175,19 +2175,19 @@ export interface CreateStatsStmt {
 export interface CreateStmt {
   type: 'CreateStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   tableElts?: Node[]
   inhRelations?: Node[]
@@ -2204,19 +2204,19 @@ export interface CreateStmt {
 export interface CreateSubscriptionStmt {
   type: 'CreateSubscriptionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   subname?: string
   conninfo?: string
   publication?: Node[]
@@ -2226,19 +2226,19 @@ export interface CreateSubscriptionStmt {
 export interface CreateTableAsStmt {
   type: 'CreateTableAsStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   query?: Node
   into?: IntoClause
   relkind?: ObjectType
@@ -2249,19 +2249,19 @@ export interface CreateTableAsStmt {
 export interface CreateTableSpaceStmt {
   type: 'CreateTableSpaceStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   tablespacename?: string
   owner?: RoleSpec
   location?: string
@@ -2271,19 +2271,19 @@ export interface CreateTableSpaceStmt {
 export interface CreateTransformStmt {
   type: 'CreateTransformStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   replace?: Boolean
   typeName?: TypeName
   lang?: string
@@ -2294,19 +2294,19 @@ export interface CreateTransformStmt {
 export interface CreateTrigStmt {
   type: 'CreateTrigStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   trigname?: string
   relation?: RangeVar
   funcname?: Node[]
@@ -2326,19 +2326,19 @@ export interface CreateTrigStmt {
 export interface CreateUserMappingStmt {
   type: 'CreateUserMappingStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   user?: RoleSpec
   servername?: string
   ifNotExists?: Boolean
@@ -2348,19 +2348,19 @@ export interface CreateUserMappingStmt {
 export interface CreatedbStmt {
   type: 'CreatedbStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   dbname?: string
   options?: Node[]
 }
@@ -2368,19 +2368,19 @@ export interface CreatedbStmt {
 export interface CurrentOfExpr {
   type: 'CurrentOfExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   cvarno?: Index
   cursorName?: string
@@ -2390,38 +2390,38 @@ export interface CurrentOfExpr {
 export interface DeallocateStmt {
   type: 'DeallocateStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
 }
 
 export interface DeclareCursorStmt {
   type: 'DeclareCursorStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   portalname?: string
   options?: GoInt
   query?: Node
@@ -2430,19 +2430,19 @@ export interface DeclareCursorStmt {
 export interface DefElem {
   type: 'DefElem'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   defnamespace?: string
   defname?: string
   arg?: Node
@@ -2456,19 +2456,19 @@ export type DefElemAction = 'DEFELEM_UNSPEC'|'DEFELEM_SET'|'DEFELEM_ADD'|'DEFELE
 export interface DefineStmt {
   type: 'DefineStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: ObjectType
   oldstyle?: Boolean
   defnames?: Node[]
@@ -2480,19 +2480,19 @@ export interface DefineStmt {
 export interface DeleteStmt {
   type: 'DeleteStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   usingClause?: Node[]
   whereClause?: Node
@@ -2506,38 +2506,38 @@ export type DiscardMode = 'DISCARD_ALL'|'DISCARD_PLANS'|'DISCARD_SEQUENCES'|'DIS
 export interface DiscardStmt {
   type: 'DiscardStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   target?: DiscardMode
 }
 
 export interface DoStmt {
   type: 'DoStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   args?: Node[]
 }
       
@@ -2547,19 +2547,19 @@ export type DropBehavior = 'DROP_RESTRICT'|'DROP_CASCADE'
 export interface DropOwnedStmt {
   type: 'DropOwnedStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   roles?: Node[]
   behavior?: DropBehavior
 }
@@ -2567,19 +2567,19 @@ export interface DropOwnedStmt {
 export interface DropRoleStmt {
   type: 'DropRoleStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   roles?: Node[]
   missingOk?: Boolean
 }
@@ -2587,19 +2587,19 @@ export interface DropRoleStmt {
 export interface DropStmt {
   type: 'DropStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objects?: Node[]
   removeType?: ObjectType
   behavior?: DropBehavior
@@ -2610,19 +2610,19 @@ export interface DropStmt {
 export interface DropSubscriptionStmt {
   type: 'DropSubscriptionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   subname?: string
   missingOk?: Boolean
   behavior?: DropBehavior
@@ -2631,19 +2631,19 @@ export interface DropSubscriptionStmt {
 export interface DropTableSpaceStmt {
   type: 'DropTableSpaceStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   tablespacename?: string
   missingOk?: Boolean
 }
@@ -2651,19 +2651,19 @@ export interface DropTableSpaceStmt {
 export interface DropUserMappingStmt {
   type: 'DropUserMappingStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   user?: RoleSpec
   servername?: string
   missingOk?: Boolean
@@ -2672,19 +2672,19 @@ export interface DropUserMappingStmt {
 export interface DropdbStmt {
   type: 'DropdbStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   dbname?: string
   missingOk?: Boolean
 }
@@ -2692,19 +2692,19 @@ export interface DropdbStmt {
 export interface ExecuteStmt {
   type: 'ExecuteStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   params?: Node[]
 }
@@ -2712,19 +2712,19 @@ export interface ExecuteStmt {
 export interface ExplainStmt {
   type: 'ExplainStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   query?: Node
   options?: Node[]
 }
@@ -2732,19 +2732,19 @@ export interface ExplainStmt {
 export interface Expr {
   type: 'Expr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
 
 }
       
@@ -2754,19 +2754,19 @@ export type FetchDirection = 'FETCH_FORWARD'|'FETCH_BACKWARD'|'FETCH_ABSOLUTE'|'
 export interface FetchStmt {
   type: 'FetchStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   direction?: FetchDirection
   howMany?: GoInt64
   portalname?: string
@@ -2776,19 +2776,19 @@ export interface FetchStmt {
 export interface FieldSelect {
   type: 'FieldSelect'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   fieldnum?: AttrNumber
@@ -2800,19 +2800,19 @@ export interface FieldSelect {
 export interface FieldStore {
   type: 'FieldStore'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   newvals?: Node[]
@@ -2823,38 +2823,38 @@ export interface FieldStore {
 export interface Float {
   type: 'Float'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   str?: string
 }
 
 export interface FromExpr {
   type: 'FromExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   fromlist?: Node[]
   quals?: Node
 }
@@ -2862,19 +2862,19 @@ export interface FromExpr {
 export interface FuncCall {
   type: 'FuncCall'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   funcname?: Node[]
   args?: Node[]
   aggOrder?: Node[]
@@ -2890,19 +2890,19 @@ export interface FuncCall {
 export interface FuncExpr {
   type: 'FuncExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   funcid?: Oid
   funcresulttype?: Oid
@@ -2918,19 +2918,19 @@ export interface FuncExpr {
 export interface FunctionParameter {
   type: 'FunctionParameter'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   argType?: TypeName
   mode?: FunctionParameterMode
@@ -2946,19 +2946,19 @@ export type GrantObjectType = 'ACL_OBJECT_COLUMN'|'ACL_OBJECT_RELATION'|'ACL_OBJ
 export interface GrantRoleStmt {
   type: 'GrantRoleStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   grantedRoles?: Node[]
   granteeRoles?: Node[]
   isGrant?: Boolean
@@ -2970,19 +2970,19 @@ export interface GrantRoleStmt {
 export interface GrantStmt {
   type: 'GrantStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   isGrant?: Boolean
   targtype?: GrantTargetType
   objtype?: GrantObjectType
@@ -2999,19 +2999,19 @@ export type GrantTargetType = 'ACL_TARGET_OBJECT'|'ACL_TARGET_ALL_IN_SCHEMA'|'AC
 export interface GroupingFunc {
   type: 'GroupingFunc'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   args?: Node[]
   refs?: Node[]
@@ -3023,19 +3023,19 @@ export interface GroupingFunc {
 export interface GroupingSet {
   type: 'GroupingSet'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: GroupingSetKind
   content?: Node[]
   location?: GoInt
@@ -3047,19 +3047,19 @@ export type GroupingSetKind = 'GROUPING_SET_EMPTY'|'GROUPING_SET_SIMPLE'|'GROUPI
 export interface ImportForeignSchemaStmt {
   type: 'ImportForeignSchemaStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   serverName?: string
   remoteSchema?: string
   localSchema?: string
@@ -3074,19 +3074,19 @@ export type ImportForeignSchemaType = 'FDW_IMPORT_SCHEMA_ALL'|'FDW_IMPORT_SCHEMA
 export interface IndexElem {
   type: 'IndexElem'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   expr?: Node
   indexcolname?: string
@@ -3099,19 +3099,19 @@ export interface IndexElem {
 export interface IndexStmt {
   type: 'IndexStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   idxname?: string
   relation?: RangeVar
   accessMethod?: string
@@ -3136,19 +3136,19 @@ export interface IndexStmt {
 export interface InferClause {
   type: 'InferClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   indexElems?: Node[]
   whereClause?: Node
   conname?: string
@@ -3158,19 +3158,19 @@ export interface InferClause {
 export interface InferenceElem {
   type: 'InferenceElem'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   expr?: Node
   infercollid?: Oid
@@ -3180,19 +3180,19 @@ export interface InferenceElem {
 export interface InlineCodeBlock {
   type: 'InlineCodeBlock'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   sourceText?: string
   langOid?: Oid
   langIsTrusted?: Boolean
@@ -3201,19 +3201,19 @@ export interface InlineCodeBlock {
 export interface InsertStmt {
   type: 'InsertStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   cols?: Node[]
   selectStmt?: Node
@@ -3226,38 +3226,38 @@ export interface InsertStmt {
 export interface Integer {
   type: 'Integer'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   ival?: GoInt64
 }
 
 export interface IntoClause {
   type: 'IntoClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   rel?: RangeVar
   colNames?: Node[]
   options?: Node[]
@@ -3270,19 +3270,19 @@ export interface IntoClause {
 export interface JoinExpr {
   type: 'JoinExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   jointype?: JoinType
   isNatural?: Boolean
   larg?: Node
@@ -3302,57 +3302,57 @@ export type LimitOption = 'LIMIT_OPTION_DEFAULT'|'LIMIT_OPTION_COUNT'
 export interface List {
   type: 'List'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   items?: Node[]
 }
 
 export interface ListenStmt {
   type: 'ListenStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   conditionname?: string
 }
 
 export interface LoadStmt {
   type: 'LoadStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   filename?: string
 }
       
@@ -3362,19 +3362,19 @@ export type LockClauseStrength = 'LCS_NONE'|'LCS_FORKEYSHARE'|'LCS_FORSHARE'|'LC
 export interface LockStmt {
   type: 'LockStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relations?: Node[]
   mode?: GoInt
   nowait?: Boolean
@@ -3386,19 +3386,19 @@ export type LockWaitPolicy = 'LockWaitBlock'|'LockWaitSkip'|'LockWaitError'
 export interface LockingClause {
   type: 'LockingClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   lockedRels?: Node[]
   strength?: LockClauseStrength
   waitPolicy?: LockWaitPolicy
@@ -3407,19 +3407,19 @@ export interface LockingClause {
 export interface MinMaxExpr {
   type: 'MinMaxExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   minmaxtype?: Oid
   minmaxcollid?: Oid
@@ -3435,19 +3435,19 @@ export type MinMaxOp = 'IS_GREATEST'|'IS_LEAST'
 export interface MultiAssignRef {
   type: 'MultiAssignRef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   source?: Node
   colno?: GoInt
   ncolumns?: GoInt
@@ -3456,19 +3456,19 @@ export interface MultiAssignRef {
 export interface NamedArgExpr {
   type: 'NamedArgExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   name?: string
@@ -3479,19 +3479,19 @@ export interface NamedArgExpr {
 export interface NextValueExpr {
   type: 'NextValueExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   seqid?: Oid
   typeId?: Oid
@@ -3500,38 +3500,38 @@ export interface NextValueExpr {
 export interface FingerprintHashContext {
   type: 'FingerprintHashContext'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   hash?: GoHash
 }
 
 export interface NotifyStmt {
   type: 'NotifyStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   conditionname?: string
   payload?: string
 }
@@ -3539,38 +3539,38 @@ export interface NotifyStmt {
 export interface Null {
   type: 'Null'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
 
 }
 
 export interface NullTest {
   type: 'NullTest'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   nulltesttype?: NullTestType
@@ -3587,19 +3587,19 @@ export type ObjectType = 'OBJECT_ACCESS_METHOD'|'OBJECT_AGGREGATE'|'OBJECT_AMOP'
 export interface ObjectWithArgs {
   type: 'ObjectWithArgs'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objname?: Node[]
   objargs?: Node[]
   argsUnspecified?: Boolean
@@ -3614,19 +3614,19 @@ export type OnConflictAction = 'ONCONFLICT_NONE'|'ONCONFLICT_NOTHING'|'ONCONFLIC
 export interface OnConflictClause {
   type: 'OnConflictClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   action?: OnConflictAction
   infer?: InferClause
   targetList?: Node[]
@@ -3637,19 +3637,19 @@ export interface OnConflictClause {
 export interface OnConflictExpr {
   type: 'OnConflictExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   action?: OnConflictAction
   arbiterElems?: Node[]
   arbiterWhere?: Node
@@ -3663,19 +3663,19 @@ export interface OnConflictExpr {
 export interface OpExpr {
   type: 'OpExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   opno?: Oid
   opfuncid?: Oid
@@ -3693,19 +3693,19 @@ export type OverridingKind = 'OVERRIDING_NOT_SET'|'OVERRIDING_USER_VALUE'|'OVERR
 export interface Param {
   type: 'Param'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   paramkind?: ParamKind
   paramid?: GoInt
@@ -3718,19 +3718,19 @@ export interface Param {
 export interface ParamExecData {
   type: 'ParamExecData'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   execPlan?: any
   value?: Datum
   isnull?: Boolean
@@ -3739,19 +3739,19 @@ export interface ParamExecData {
 export interface ParamExternData {
   type: 'ParamExternData'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   value?: Datum
   isnull?: Boolean
   pflags?: GoUint16
@@ -3764,19 +3764,19 @@ export type ParamKind = 'PARAM_EXTERN'|'PARAM_EXEC'|'PARAM_SUBLINK'|'PARAM_MULTI
 export interface ParamListInfoData {
   type: 'ParamListInfoData'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   paramFetchArg?: any
   parserSetupArg?: any
   numParams?: GoInt
@@ -3786,19 +3786,19 @@ export interface ParamListInfoData {
 export interface ParamRef {
   type: 'ParamRef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   number?: GoInt
   location?: GoInt
 }
@@ -3806,19 +3806,19 @@ export interface ParamRef {
 export interface PartitionBoundSpec {
   type: 'PartitionBoundSpec'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   strategy?: GoByte
   listdatums?: Node[]
   lowerdatums?: Node[]
@@ -3829,19 +3829,19 @@ export interface PartitionBoundSpec {
 export interface PartitionCmd {
   type: 'PartitionCmd'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: RangeVar
   bound?: PartitionBoundSpec
 }
@@ -3849,19 +3849,19 @@ export interface PartitionCmd {
 export interface PartitionElem {
   type: 'PartitionElem'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   expr?: Node
   collation?: Node[]
@@ -3872,19 +3872,19 @@ export interface PartitionElem {
 export interface PartitionRangeDatum {
   type: 'PartitionRangeDatum'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: PartitionRangeDatumKind
   value?: Node
   location?: GoInt
@@ -3896,19 +3896,19 @@ export type PartitionRangeDatumKind = 'PARTITION_RANGE_DATUM_MINVALUE'|'PARTITIO
 export interface PartitionSpec {
   type: 'PartitionSpec'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   strategy?: string
   partParams?: Node[]
   location?: GoInt
@@ -3917,19 +3917,19 @@ export interface PartitionSpec {
 export interface PrepareStmt {
   type: 'PrepareStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   argtypes?: Node[]
   query?: Node
@@ -3938,19 +3938,19 @@ export interface PrepareStmt {
 export interface Query {
   type: 'Query'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   commandType?: CmdType
   querySource?: QuerySource
   queryId?: GoUint32
@@ -3995,19 +3995,19 @@ export type QuerySource = 'QSRC_ORIGINAL'|'QSRC_PARSER'|'QSRC_INSTEAD_RULE'|'QSR
 export interface RangeFunction {
   type: 'RangeFunction'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   lateral?: Boolean
   ordinality?: Boolean
   isRowsfrom?: Boolean
@@ -4019,19 +4019,19 @@ export interface RangeFunction {
 export interface RangeSubselect {
   type: 'RangeSubselect'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   lateral?: Boolean
   subquery?: Node
   alias?: Alias
@@ -4040,19 +4040,19 @@ export interface RangeSubselect {
 export interface RangeTableFunc {
   type: 'RangeTableFunc'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   lateral?: Boolean
   docexpr?: Node
   rowexpr?: Node
@@ -4065,19 +4065,19 @@ export interface RangeTableFunc {
 export interface RangeTableFuncCol {
   type: 'RangeTableFuncCol'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   colname?: string
   typeName?: TypeName
   forOrdinality?: Boolean
@@ -4090,19 +4090,19 @@ export interface RangeTableFuncCol {
 export interface RangeTableSample {
   type: 'RangeTableSample'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: Node
   method?: Node[]
   args?: Node[]
@@ -4113,19 +4113,19 @@ export interface RangeTableSample {
 export interface RangeTblEntry {
   type: 'RangeTblEntry'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   rtekind?: RTEKind
   relid?: Oid
   relkind?: GoByte
@@ -4162,19 +4162,19 @@ export interface RangeTblEntry {
 export interface RangeTblFunction {
   type: 'RangeTblFunction'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   funcexpr?: Node
   funccolcount?: GoInt
   funccolnames?: Node[]
@@ -4187,38 +4187,38 @@ export interface RangeTblFunction {
 export interface RangeTblRef {
   type: 'RangeTblRef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   rtindex?: GoInt
 }
 
 export interface RangeVar {
   type: 'RangeVar'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   catalogname?: string
   schemaname?: string
   relname?: string
@@ -4231,19 +4231,19 @@ export interface RangeVar {
 export interface RawStmt {
   type: 'RawStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   stmt?: Node
   stmtLocation?: GoInt
   stmtLen?: GoInt
@@ -4252,19 +4252,19 @@ export interface RawStmt {
 export interface ReassignOwnedStmt {
   type: 'ReassignOwnedStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   roles?: Node[]
   newrole?: RoleSpec
 }
@@ -4272,19 +4272,19 @@ export interface ReassignOwnedStmt {
 export interface RefreshMatViewStmt {
   type: 'RefreshMatViewStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   concurrent?: Boolean
   skipData?: Boolean
   relation?: RangeVar
@@ -4296,19 +4296,19 @@ export type ReindexObjectType = 'REINDEX_OBJECT_INDEX'|'REINDEX_OBJECT_TABLE'|'R
 export interface ReindexStmt {
   type: 'ReindexStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: ReindexObjectType
   relation?: RangeVar
   name?: string
@@ -4318,19 +4318,19 @@ export interface ReindexStmt {
 export interface RelabelType {
   type: 'RelabelType'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   arg?: Node
   resulttype?: Oid
@@ -4343,19 +4343,19 @@ export interface RelabelType {
 export interface RenameStmt {
   type: 'RenameStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   renameType?: ObjectType
   relationType?: ObjectType
   relation?: RangeVar
@@ -4369,19 +4369,19 @@ export interface RenameStmt {
 export interface ReplicaIdentityStmt {
   type: 'ReplicaIdentityStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   identityType?: GoByte
   name?: string
 }
@@ -4389,19 +4389,19 @@ export interface ReplicaIdentityStmt {
 export interface ResTarget {
   type: 'ResTarget'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   indirection?: Node[]
   val?: Node
@@ -4411,19 +4411,19 @@ export interface ResTarget {
 export interface RoleSpec {
   type: 'RoleSpec'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   roletype?: RoleSpecType
   rolename?: string
   location?: GoInt
@@ -4438,19 +4438,19 @@ export type RoleStmtType = 'ROLESTMT_ROLE'|'ROLESTMT_USER'|'ROLESTMT_GROUP'
 export interface RowCompareExpr {
   type: 'RowCompareExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   rctype?: RowCompareType
   opnos?: Node[]
@@ -4466,19 +4466,19 @@ export type RowCompareType = 'ROWCOMPARE_LT'|'ROWCOMPARE_LE'|'ROWCOMPARE_EQ'|'RO
 export interface RowExpr {
   type: 'RowExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   args?: Node[]
   rowTypeid?: Oid
@@ -4490,19 +4490,19 @@ export interface RowExpr {
 export interface RowMarkClause {
   type: 'RowMarkClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   rti?: Index
   strength?: LockClauseStrength
   waitPolicy?: LockWaitPolicy
@@ -4515,19 +4515,19 @@ export type RTEKind = 'RTE_RELATION'|'RTE_SUBQUERY'|'RTE_JOIN'|'RTE_FUNCTION'|'R
 export interface RuleStmt {
   type: 'RuleStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   rulename?: string
   whereClause?: Node
@@ -4540,19 +4540,19 @@ export interface RuleStmt {
 export interface ScalarArrayOpExpr {
   type: 'ScalarArrayOpExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   opno?: Oid
   opfuncid?: Oid
@@ -4568,19 +4568,19 @@ export type ScanDirection = 'BackwardScanDirection'|'NoMovementScanDirection'|'F
 export interface SecLabelStmt {
   type: 'SecLabelStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   objtype?: ObjectType
   object?: Node
   provider?: string
@@ -4590,19 +4590,19 @@ export interface SecLabelStmt {
 export interface SelectStmt {
   type: 'SelectStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   distinctClause?: Node[]
   intoClause?: IntoClause
   targetList?: Node[]
@@ -4636,19 +4636,19 @@ export type SetOperation = 'SETOP_NONE'|'SETOP_UNION'|'SETOP_INTERSECT'|'SETOP_E
 export interface SetOperationStmt {
   type: 'SetOperationStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   op?: SetOperation
   all?: Boolean
   larg?: Node
@@ -4662,19 +4662,19 @@ export interface SetOperationStmt {
 export interface SetToDefault {
   type: 'SetToDefault'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   typeId?: Oid
   typeMod?: GoInt32
@@ -4685,19 +4685,19 @@ export interface SetToDefault {
 export interface SortBy {
   type: 'SortBy'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   node?: Node
   sortbyDir?: SortByDir
   sortbyNulls?: SortByNulls
@@ -4714,19 +4714,19 @@ export type SortByNulls = 'SORTBY_NULLS_DEFAULT'|'SORTBY_NULLS_FIRST'|'SORTBY_NU
 export interface SortGroupClause {
   type: 'SortGroupClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   tleSortGroupRef?: Index
   eqop?: Oid
   sortop?: Oid
@@ -4737,19 +4737,19 @@ export interface SortGroupClause {
 export interface SQLValueFunction {
   type: 'SQLValueFunction'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   op?: SQLValueFunctionOp
   _type?: Oid
@@ -4766,38 +4766,38 @@ export type StmtType = 'Ack'|'DDL'|'RowsAffected'|'Rows'|'CopyIn'|'Unknown'
 export interface String {
   type: 'String'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   str?: string
 }
 
 export interface SubLink {
   type: 'SubLink'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   subLinkType?: SubLinkType
   subLinkId?: GoInt
@@ -4813,19 +4813,19 @@ export type SubLinkType = 'EXISTS_SUBLINK'|'ALL_SUBLINK'|'ANY_SUBLINK'|'ROWCOMPA
 export interface SubPlan {
   type: 'SubPlan'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   subLinkType?: SubLinkType
   testexpr?: Node
@@ -4848,19 +4848,19 @@ export interface SubPlan {
 export interface SyntaxTree {
   type: 'SyntaxTree'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   statements?: Node[]
   query?: string
 }
@@ -4868,19 +4868,19 @@ export interface SyntaxTree {
 export interface TableFunc {
   type: 'TableFunc'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   nsUris?: Node[]
   nsNames?: Node[]
   docexpr?: Node
@@ -4899,19 +4899,19 @@ export interface TableFunc {
 export interface TableLikeClause {
   type: 'TableLikeClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   options?: GoUint32
 }
@@ -4922,19 +4922,19 @@ export type TableLikeOption = 'CREATE_TABLE_LIKE_DEFAULTS'|'CREATE_TABLE_LIKE_CO
 export interface TableSampleClause {
   type: 'TableSampleClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   tsmhandler?: Oid
   args?: Node[]
   repeatable?: Node
@@ -4943,19 +4943,19 @@ export interface TableSampleClause {
 export interface TargetEntry {
   type: 'TargetEntry'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   expr?: Node
   resno?: AttrNumber
@@ -4969,19 +4969,19 @@ export interface TargetEntry {
 export interface TransactionStmt {
   type: 'TransactionStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: TransactionStmtKind
   options?: Node[]
   gid?: string
@@ -4993,19 +4993,19 @@ export type TransactionStmtKind = 'TRANS_STMT_BEGIN'|'TRANS_STMT_START'|'TRANS_S
 export interface TriggerTransition {
   type: 'TriggerTransition'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   isNew?: Boolean
   isTable?: Boolean
@@ -5014,19 +5014,19 @@ export interface TriggerTransition {
 export interface TruncateStmt {
   type: 'TruncateStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relations?: Node[]
   restartSeqs?: Boolean
   behavior?: DropBehavior
@@ -5035,19 +5035,19 @@ export interface TruncateStmt {
 export interface TypeCast {
   type: 'TypeCast'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   arg?: Node
   typeName?: TypeName
   location?: GoInt
@@ -5056,19 +5056,19 @@ export interface TypeCast {
 export interface TypeName {
   type: 'TypeName'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   names?: Node[]
   typeOid?: Oid
   setof?: Boolean
@@ -5082,38 +5082,38 @@ export interface TypeName {
 export interface UnlistenStmt {
   type: 'UnlistenStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   conditionname?: string
 }
 
 export interface UpdateStmt {
   type: 'UpdateStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   relation?: RangeVar
   targetList?: Node[]
   whereClause?: Node
@@ -5125,19 +5125,19 @@ export interface UpdateStmt {
 export interface DeparseTest {
   type: 'DeparseTest'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   query?: string
   expected?: string
   expectedParseError?: string
@@ -5150,19 +5150,19 @@ export type VacuumOption = 'VACOPT_VACUUM'|'VACOPT_ANALYZE'|'VACOPT_VERBOSE'|'VA
 export interface VacuumStmt {
   type: 'VacuumStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   options?: GoInt
   relation?: RangeVar
   vaCols?: Node[]
@@ -5171,19 +5171,19 @@ export interface VacuumStmt {
 export interface Var {
   type: 'Var'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   varno?: Index
   varattno?: AttrNumber
@@ -5199,19 +5199,19 @@ export interface Var {
 export interface varattexternal {
   type: 'varattexternal'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   vaRawsize?: GoInt32
   vaExtsize?: GoInt32
   vaValueid?: Oid
@@ -5224,19 +5224,19 @@ export type VariableSetKind = 'VAR_SET_VALUE'|'VAR_SET_DEFAULT'|'VAR_SET_CURRENT
 export interface VariableSetStmt {
   type: 'VariableSetStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: VariableSetKind
   name?: string
   args?: Node[]
@@ -5246,19 +5246,19 @@ export interface VariableSetStmt {
 export interface VariableShowStmt {
   type: 'VariableShowStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
 }
       
@@ -5271,19 +5271,19 @@ export type ViewCheckOption = 'NO_CHECK_OPTION'|'LOCAL_CHECK_OPTION'|'CASCADED_C
 export interface ViewStmt {
   type: 'ViewStmt'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   view?: RangeVar
   aliases?: Node[]
   query?: Node
@@ -5298,19 +5298,19 @@ export type WCOKind = 'WCO_VIEW_CHECK'|'WCO_RLS_INSERT_CHECK'|'WCO_RLS_UPDATE_CH
 export interface WindowClause {
   type: 'WindowClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   refname?: string
   partitionClause?: Node[]
@@ -5325,19 +5325,19 @@ export interface WindowClause {
 export interface WindowDef {
   type: 'WindowDef'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   name?: string
   refname?: string
   partitionClause?: Node[]
@@ -5351,19 +5351,19 @@ export interface WindowDef {
 export interface WindowFunc {
   type: 'WindowFunc'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   winfnoid?: Oid
   wintype?: Oid
@@ -5380,19 +5380,19 @@ export interface WindowFunc {
 export interface WithCheckOption {
   type: 'WithCheckOption'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   kind?: WCOKind
   relname?: string
   polname?: string
@@ -5403,19 +5403,19 @@ export interface WithCheckOption {
 export interface WithClause {
   type: 'WithClause'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   ctes?: Node[]
   recursive?: Boolean
   location?: GoInt
@@ -5424,19 +5424,19 @@ export interface WithClause {
 export interface XmlExpr {
   type: 'XmlExpr'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xpr?: Node
   op?: XmlExprOp
   name?: string
@@ -5458,19 +5458,19 @@ export type XmlOptionType = 'XMLOPTION_DOCUMENT'|'XMLOPTION_CONTENT'
 export interface XmlSerialize {
   type: 'XmlSerialize'
   parent: Node|null
-    start: number
-    end: number
-    loc: {
-      start: {
-        line: number
-        column: number
-      }
-      end: {
-        line: number
-        column: number
-      }
+  start: number
+  end: number
+  loc: {
+    start: {
+      line: number
+      column: number
     }
-    range: [number, number]
+    end: {
+      line: number
+      column: number
+    }
+  }
+  range: [number, number]
   xmloption?: XmlOptionType
   expr?: Node
   typeName?: TypeName
