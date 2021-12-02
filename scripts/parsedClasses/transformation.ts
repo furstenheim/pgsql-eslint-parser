@@ -13391,7 +13391,7 @@ function transformXmlSerialize (value: pgAst.XmlSerialize, parent: eslintAst.Nod
 const mapping = {
   AArrayExpr: transformAArrayExpr,
     A_Const: transformAConst,
-    AExpr: transformAExpr,
+    A_Expr: transformAExpr,
     AIndices: transformAIndices,
     AIndirection: transformAIndirection,
     AStar: transformAStar,
@@ -13625,7 +13625,9 @@ export function transformNode (node: pgAst.Node, parent: eslintAst.Node|null, po
     console.error('Unexpected keys for node type', keys)
     throw new Error('Unexpected keys for node')
   }
-  return mapping[keys[0]](node, parent, possibleStart)
+  
+    // @ts-ignore
+  return mapping[keys[0]](node[keys[0]], parent, possibleStart)
 } 
 
 export const visitorKeys = {
@@ -14556,4 +14558,4 @@ export const visitorKeys = {
     "typeName"
   ]
 }
-  
+visitorKeys['Program'] = ['queries']

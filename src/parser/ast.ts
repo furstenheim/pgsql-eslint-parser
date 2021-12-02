@@ -1,5 +1,9 @@
-import * as types from '../types'
 import * as eslintAst from './eslint-ast'
+import type { AST } from 'eslint'
+export type Token = AST.Token
+
+export type Comment = String
+
 export interface SourceLocation {
   start: Position
   end: Position
@@ -23,9 +27,9 @@ export interface BasePostgresNode extends Locations {
 
 export interface PostgresProgram extends BasePostgresNode {
   type: 'Program'
-  queries: eslintAst.Node[]
-  comments: types.Comment[]
-  tokens: types.Token[]
+  body: eslintAst.Node[]
+  comments: Comment[]
+  tokens: Token[]
   parent: null
 }
 

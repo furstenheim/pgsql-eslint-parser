@@ -3,7 +3,8 @@ const path = require('path')
 const _ = require('lodash')
 
 const structToNodeKey = {
-  AConst: 'A_Const'
+  AConst: 'A_Const',
+  AExpr: 'A_Expr'
 }
 
 main()
@@ -29,7 +30,9 @@ async function writeTransformFunctions (types, typesByName) {
 import * as eslintAst from './eslint-ast'
 ${getCommonTransformations()}  
   `)
-  const visitorKeys = {}
+  const visitorKeys = {
+    Program: ['body']
+  }
 
   for (const type of types) {
     if (type.type === 'enum') {
@@ -109,6 +112,8 @@ export function transformNode (node: pgAst.Node, parent: eslintAst.Node|null, po
     console.error('Unexpected keys for node type', keys)
     throw new Error('Unexpected keys for node')
   }
+  
+    // @ts-ignore
   return mapping[keys[0]](node[keys[0]], parent, possibleStart)
 } 
 

@@ -14,7 +14,6 @@ export function parseForESLint (
     services: unknown
   } {
   const result: PGOutput = parser.parseQuerySync(code)
-  console.log(result)
   const root: PostgresProgram = {
     // TODO fix location and range
     loc: {
@@ -27,18 +26,18 @@ export function parseForESLint (
     },
     range: [1, 30],
     type: 'Program',
-    queries: [],
+    body: [],
     comments: [],
     tokens: [],
     parent: null
   }
-  root.queries = result.stmts.map(function (statement) {
+  root.body = result.stmts.map(function (statement) {
     // @ts-expect-error  root is not node TODO fix
     return transformation.transformNode(statement.stmt, root, statement.stmt_location === undefined ? 0 : statement.stmt_location)
   })
 
   console.log('##########')
-
+  console.log(util.inspect(root.body, false, Infinity))
   return {
     services: {},
     visitorKeys: transformation.visitorKeys,

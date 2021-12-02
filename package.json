@@ -1,11 +1,12 @@
 {
-  "name": "sql-linter",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "pgsql-eslint-parser",
+  "version": "0.0.1",
+  "main": "lib/src/parser/parser.js",
   "scripts": {
     "watch": "nodemon main.js",
     "test": "mocha --require ts-node/register test/**/*.test.ts test/*.test.ts",
-    "test:watch": "mocha --watch --watch-extension ts --require ts-node/register test/**/*.test.ts test/*.test.ts"
+    "test:watch": "mocha --watch --watch-extension ts --require ts-node/register test/**/*.test.ts test/*.test.ts",
+    "typescript-compile": "tsc"
   },
   "license": "MIT",
   "dependencies": {
@@ -20,6 +21,7 @@
     "nodemon": "^2.0.13"
   },
   "devDependencies": {
+    "@types/eslint": "^8.2.0",
     "@types/node": "^16.10.3",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "chai": "^4.3.4",

@@ -10507,7 +10507,6 @@ function transformSelectStmt (value: pgAst.SelectStmt, parent: eslintAst.Node|nu
   const locationStart = possibleStart
   let locationEnd = locationStart + 1
 
-  console.log('value', value)
   if (value.distinctClause !== undefined) {
     const resultTransform = transformArrayNode(value.distinctClause, result, locationStart)
     if (resultTransform.end > locationEnd) {
@@ -12604,7 +12603,7 @@ function transformXmlSerialize (value: pgAst.XmlSerialize, parent: eslintAst.Nod
 const mapping = {
   AArrayExpr: transformAArrayExpr,
   A_Const: transformAConst,
-  AExpr: transformAExpr,
+  A_Expr: transformAExpr,
   AIndices: transformAIndices,
   AIndirection: transformAIndirection,
   AStar: transformAStar,
@@ -12838,10 +12837,7 @@ export function transformNode (node: pgAst.Node, parent: eslintAst.Node|null, po
     console.error('Unexpected keys for node type', keys)
     throw new Error('Unexpected keys for node')
   }
-  console.log(possibleStart)
-  console.log(node)
-
-  // @ts-ignore
+  // @ts-expect-error
   return mapping[keys[0]](node[keys[0]], parent, possibleStart)
 }
 
@@ -13772,7 +13768,5 @@ export const visitorKeys = {
     'expr',
     'typeName'
   ],
-  Program: [
-    'queries'
-  ]
+  Program: ['body']
 }

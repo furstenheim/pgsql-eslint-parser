@@ -16,7 +16,7 @@ mocha.describe('Check AST', function () {
       const parsed = parser.parseForESLint(inputContent.toString())
       console.log('--')
       console.log('--', util.inspect(_.omit(parsed, ['visitorKeys']), false, Infinity))
-      // expect(parsed).equal(outputContent) 
+      // expect(parsed).equal(outputContent)
     })
   }
 })

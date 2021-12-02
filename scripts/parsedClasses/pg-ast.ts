@@ -2060,7 +2060,7 @@ export interface XmlSerialize {
 export interface Node {
     AArrayExpr?: AArrayExpr
     A_Const?: AConst
-    AExpr?: AExpr
+    A_Expr?: AExpr
     AIndices?: AIndices
     AIndirection?: AIndirection
     AStar?: AStar
